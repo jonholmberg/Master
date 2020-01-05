@@ -157,12 +157,11 @@
 \tableofcontents
 
 \section{Introduction}
-
 In this short article we use recollement in the sense of \todo{litterature} to look at chromatic homotopy theory, and consider a special case of this as Bousfield localisation of $p$-complete spectra using localisation as Bousfield describes in his article \todo{litterature}.
 \begin{notation}
   We let $MU$ denote the spectrum representing complex cobordism cohomology theory as usual, and $\mathcal{D} (\Sph_p)$ denote the stable $\infty$-category of $p$-complete spectra. One could also write this as $\operatorname{Sp}_p$, but we will refrain from that.
 \end{notation}
-In section \ref{Subsection:recollementpcompletespectra} we will work in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$. This is a pointed $\infty$-category by the zero category, but it is not stable itself. In this category we will work with \textit{Verdier sequences} which are defined as follows
+In section \ref{Subsection:recollementpcompletespectra} we will work in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$. This is a pointed $\infty$-category by the zero category, but it is \textit{not} stable itself. In this category we will work with \textit{Verdier sequences} which are defined as follows
 
 \begin{definition}
   A \textit{Verdier sequence} in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$ is a bicartesian square
@@ -210,7 +209,7 @@ of $\moduli$ along $p$. This has a stratification of closed sub-ind-stacks
 \[
 \cdots \subset \moduliH^{\ge 2} \subset \moduliH^{\ge 1}  \subset \moduliH^{\ge 0} = \moduliH
 \]
-called \textit{the height stratification} of $\moduliH$. As we will see next, we can use the height stratification to define a filtration on the stable $\infty$-category of $p$-complete spectra $\Spp$.s
+called \textit{the height stratification} of $\moduliH$. As we will see next, we can use the height stratification to define a filtration on the stable $\infty$-category of $p$-complete spectra $\Spp$.
 
 \subsection{Recollements of $p$-complete spectra}\label{Subsection:recollementpcompletespectra}
 
@@ -222,9 +221,9 @@ We can define a filtration $\operatorname{Fil}^h \Spp$ of $\Spp$, and each such 
   \]
   be the full subcategory spanned by all $p$-complete spectra $X$ such that the associated quasicoherent sheaves (see above) $\mathcal{F}_X$ and $\mathcal{F}_{\Sigma X}$ are supported on $\moduliH^{\ge h}$, and let $i_\vee$ denote the inclusion $\Spp^{\ge h} \hookrightarrow \Spp$
 \end{definition}
-Denote the Verdier quotient $D(\mathbb{S}_p)/D(\mathbb{S}_p)^{\ge h+1}$ by $D(\mathbb{S}_p)^{\le h}$ and so we have a Verdier sequence
+Denote the Verdier quotient $\Spp/\Spp^{\ge h+1}$ by $\Spp^{\le h}$ and so we have a Verdier sequence
 \[
-D(\mathbb{S}_p)^{\ge h+1} \overset{i_\vee}{\hookrightarrow} D(\mathbb{S}_p) \overset{j^*}{\to} D(\mathbb{S}_p)^{\le h}.
+\Spp^{\ge h+1} \overset{i_\vee}{\hookrightarrow} \Spp \overset{j^*}{\to} \Spp^{\le h}.
 \]
 Now $j^*$ admits a right adjoint $j_*$, \todo{why?} and $j_*j^*$ is smashing (Lurie, lecture 23, Theorem 4), so $j_*$ admits a right adjoint.  Applying the Recollement results we have seen earlier we get a diagram
 \iffalse
@@ -290,11 +289,11 @@ since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$ (also $L_{K(h)}L_{E(h)}X = L_{K(h)}X$?
 As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \todo{ref} concerns the case of $E(1)$-localisations, also know as $KU_p$-localisation for a prime $p$. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra for a prime $p$. In this case latter recollement diagram above then looks as follows. \todo{do we need this recollement square?}
 \begin{center}
     \begin{tikzcd}[sep = large]
-    D(\mathbb{S}_p)^{\ge 1}/D(\mathbb{S}_p)^{\ge 2} \arrow[dr, shift left=1ex, "i_\vee"] \arrow[dd, shift right=1.5ex, "i^\wedge i_\vee"'] \\
+    \Spp^{\ge 1}/\Spp^{\ge 2} \arrow[dr, shift left=1ex, "i_\vee"] \arrow[dd, shift right=1.5ex, "i^\wedge i_\vee"'] \\
 
-    {} & D(\mathbb{S}_p)^{\le 1}  \arrow[dl,shift  right=1ex, "i^\wedge" description]  \arrow[ul, shift left=1ex, "i^\vee"]  \arrow[r, bend left, "j^*"] \arrow[r, above, bend right, "j^\times"] & \arrow{l}{}[swap]{j_*} D(\mathbb{S}_p)^{\le 0} \\
+    {} & \Spp^{\le 1}  \arrow[dl,shift  right=1ex, "i^\wedge" description]  \arrow[ul, shift left=1ex, "i^\vee"]  \arrow[r, bend left, "j^*"] \arrow[r, above, bend right, "j^\times"] & \arrow{l}{}[swap]{j_*} \Spp^{\le 0} \\
 
-    D(\mathbb{S}_p)^{\le 1}/D(\mathbb{S}_p)^{\le 0} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
+    \Spp^{\le 1}/\Spp^{\le 0} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
     \end{tikzcd}
 \end{center}
 Denote $j_*j^*$ by $L_{E(1)}$ as before. Bousfield mentions two results in his article which will be crucial to our calculations. These are the contents of following two theorems.
@@ -400,7 +399,7 @@ What remains in our calculations is to identify the cokernel of $g^n-\id$ when $
     x=\sum_{n = 0}^\infty a_n p^n
   \]
   where $ 0 \le a_n \le p-1$ for all $n$.
-  An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$. We can define the \textit{$p$-adic valuation} function $v_p \colon \Z_p \to \Z \cup \{\infty\}$ as follows. Every $p$-adic integer $x \in \Z_p$ can be uniquely written as $x = up^n$ where $u$ is a $p$-adic unit and $n$ is a non-negative integer. Set $v_p(x) = n$, with the convention that $v_p(0) = \infty$.
+  An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$, i.e. $a_0 \neq 0$. We can define the \textit{$p$-adic valuation} function $v_p \colon \Z_p \to \Z \cup \{\infty\}$ as follows. Every $p$-adic integer $x \in \Z_p$ can be uniquely written as $x = up^n$ where $u$ is a $p$-adic unit and $n$ is a non-negative integer. Set $v_p(x) = n$, with the convention that $v_p(0) = \infty$.
 \end{remark}
 
 \begin{lemma}
@@ -457,57 +456,5 @@ where the last non-trivial map is mod $2$. This splits since we can lift $-1$ to
 \[
 \Z_2^* \cong 4\Z_2 \times \{\pm 1\}.
 \]
-
-\subsubsection{Extra}
-
-We know \todo{from where?} that $\pi_{2n}(E(1)) = \Z_p$ the $p$-adic integers, and $\pi_{2n+1}(E(1)) = 0$ and we have a fiber sequence by (2)
-\[
-\begin{tikzcd}
-L_{E(1)} \Sph_p \rar & E(1) \rar{\psi_g - \operatorname{id}} & E(1).
-\end{tikzcd}
-\]
-Hence the long exact sequence of homotopy groups looks like
-\[
-\begin{tikzcd}
-\cdots \rar & \Z_p \rar{\psi^g - \operatorname{id}} & \Z_p \rar{} & \pi_{2n-1}(L_{E(1)}\Sph_p) \rar & 0 \rar & \cdots
-\end{tikzcd}
-\]
-Notice that $\psi^n = g^n$, so if $n=0$ then $\psi^n - \operatorname{id} = 0$ and so $\pi_{-1}L_{E(1)}\Sph_p \simeq \pi_{0}L_{E(1)}\Sph_p \simeq \Z_p$. If $n \neq 0$, then $g^n - \operatorname{id} \neq 0$ and $\psi^n - \operatorname{id}$ is therefore always injective. So the LES above reduces to short exact sequences
-\[
-\begin{tikzcd}
-0 \rar & \Z_p \rar{\psi^g - \operatorname{id}} & \Z_p \rar{} & \pi_{2n-1}(L_{E(1)}\Sph_p) \rar & 0
-\end{tikzcd}
-\]
-In particular we see that the even homotopy groups of $L_{E(1)}\Sph_p$ vanish. But we also have a short exact sequence given the cokernel of $\psi^g-\operatorname{id}$
-\[
-\begin{tikzcd}
-0 \rar & \Z_p \rar{\psi^g - \operatorname{id}} & \Z_p \rar{} & \Z_p/{p^{v_p(g^n-1)}\Z_p} \rar & 0
-\end{tikzcd}
-\]
-where $v_p \colon \Z_p \to \Z \cup \{\infty\}$ is the $p$-adic valuation (reduction). It works as follows. For each element $x \in \Z_p$ we can uniquely write $x=up^k$ where $u$ is a unit of $\Z_p$, and we define $v_p(x) = k$. From this we conclude that
-\[
-\pi_{2n-1}(L_{E(1)}\Sph_p) \simeq \Z_p/{p^{v_p(g^n-1)}\Z_p}
-\]
-and so we turn our attention to the units of $\Z_p$ to better understand $\Z_p/{p^{v_p(g^n-1)}\Z_p}$. \todo{or since htpy fixed points?}
-
-The units of $\Z_p$ fits into a short exact sequence
-\[
-\begin{tikzcd}
-1 \rar & (1+p\Z_p)^* \rar{} & \Z_p^* \rar{} & \F_p^* \rar & 1
-\end{tikzcd}
-\]
-where the map $\Z_p^* \to \F_p^*$ is modulo $p$. Notice that since $p$ does not divide $g$, \todo{since $g$ was chosen in $\Z_p^*$?} $g^n$ is sent to $1 \in \F_p^*$, iff $(p-1)$ divides $n$. So if $p-1$ does not divide $n$ (then $p$ does not divide $g^n$?), this means that $v_p(g^n-1)=0$, since we can write $g^n = p^k +1$ for some $k$. So in this case
-\[
-\pi_{2n-1}(L_{E(1)}\Sph_p) \simeq \Z_p/{p^{v_p(g^n-1)}\Z_p} \simeq 0
-\]
-
-The final case is when $p-1$ divides $n$. Then we can write
-\[
-g^n = {(g^{p-1})}^{n/(p-1)}
-\]
-which is now an element of the kernel $1+p\Z_p$.
-
-Have action $\Z_p^* \to \operatorname{Aut}(E(1))$ by $k \mapsto \psi^k$
-and Bousfield computes $L_{E(1)}\Sph_p \simeq E(1)^{h\Z_p^*}$, so we're interested in these homotopy fixed points \todo{this is equivalent to the fiber seq above?}
 
 \end{document}

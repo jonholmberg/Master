@@ -1,0 +1,10 @@
+# LaTeX files
+*.pdf
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.toc
+
+# MacOS files
+.DS_Store

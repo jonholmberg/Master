@@ -1,0 +1,513 @@
+\documentclass[a4paper]{article} % report for thesis, article for assignments
+\usepackage{amsthm} % amsthm
+\usepackage[english]{babel}       % Configure hyphenation.
+\usepackage[utf8]{inputenc}       % Allow e.g. danish letters.
+\usepackage{mathtools}            % Random tools like reverse lim
+\usepackage[T1]{fontenc}          % Proper copy-paste and hyphenation of accented characters.
+% \usepackage[backend=biber]{biblatex}
+% \usepackage[english, science, titlepage]{ku-frontpage/package} % KU front page.
+
+\usepackage{amssymb}              % Load additional symbols, such as \blacksquare
+\usepackage{tikz-cd}              % Commutative diagrams.
+\usepackage{graphicx}             % Include figures.
+\usepackage[margin=3cm,top=3cm, bottom=3cm]{geometry}         % Change margins.
+\usepackage{faktor}               % Nice algebraic quotients.
+\usepackage{xfrac}                % Nice in-line fraction.
+\usepackage{enumerate}            % Easy enumerate
+\usepackage{todonotes}
+\usepackage{subfiles}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\setlength{\emergencystretch}{3em}
+\renewcommand{\baselinestretch}{1.1}
+
+%       Theorem environments
+%\renewcommand{\qedsymbol}{$\blacksquare$}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem} % Add [section] to also index by section.
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemmau}{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{hw}{HW.}
+%\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{notation}{Notation}
+\newenvironment{parts}[1]{\par\noindent\textbf{Part\space#1}}{}
+\newenvironment{sketch}{\noindent\textit{Sketch of proof.}}{\hfill$\square$}
+
+%       Characters
+\let\epsilon\varepsilon
+\let\phi\varphi
+
+%       General math stuff
+\newcommand{\toWithMap}[1]{\overset{#1}{\to}}
+\newcommand{\toWithMapLong}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\getsWithMap}[1]{\overset{#1}{\gets}}
+
+%       Number systems
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+
+%       Spectra
+\newcommand{\Sph}{\mathbb{S}}
+
+%       Functional analysis
+\newcommand{\Lc}{\mathcal{L}}
+
+%       Brackets
+\newcommand{\curly}[1]{ \left\{ #1 \right\} }
+\newcommand{\paren}[1]{ \left( #1 \right) }
+
+%       Addition math operators
+\DeclareMathOperator{\id}{id}           % Identity function.
+\DeclareMathOperator{\im}{im}           % Image of function.
+\DeclareMathOperator{\Span}{span}       % Span of X.
+\DeclareMathOperator{\Maps}{Maps}       % Span of X.
+
+%       Category theory
+\newcommand{\Set}{\mathsf{Set}}         % Sets.
+\newcommand{\Top}{\mathsf{Top}}         % Topological spaces.
+\newcommand{\Grp}{\mathsf{Grp}}         % Groups.
+\newcommand{\Ab}{\mathsf{Ab}}           % Abelian groups.
+\newcommand{\Rmod}{\mathsf{_RMod}}      % Left R modules - fixed ring R.
+\newcommand{\Modl}[1]{\mathsf{_#1Mod}}  % Left - modules. Parametrized ring.
+\newcommand{\Modr}[1]{\mathsf{Mod_#1}}  % Right - modules. Ditto.
+\DeclareMathOperator{\coker}{coker}     % Cokernel.
+\DeclareMathOperator{\Hom}{Hom}         % Hom set.
+\DeclareMathOperator{\Fun}{Fun}         % Function set
+\DeclareMathOperator{\End}{End}         % Endomorphisms.
+\DeclareMathOperator{\Aut}{Aut}         % Automorphisms.
+\DeclareMathOperator{\Spec}{Spec}       % Spectrum of ring.
+\DeclareMathOperator{\Ass}{Ass}         % Associated prime ideals.
+\DeclareMathOperator{\Ann}{Ann}         % Annihilator.
+\DeclareMathOperator{\Ext}{Ext}         % Ext functor.
+\DeclareMathOperator{\Tor}{Tor}         % Tor functor.
+\DeclareMathOperator{\colim}{colim}     % Colimit of diagram.
+\DeclareMathOperator{\Cat}{Cat}         % Small category of categories.
+
+%       Homotopy theory
+\DeclareMathOperator{\hofib}{hofib}
+
+%       Set theory
+\DeclareMathOperator{\interior}{Int}
+\newcommand{\interiorcirc}[1]{\overset{\circ}{#1}}
+\newcommand{\boundary}[1]{\delta #1}
+
+%       Functions
+\renewcommand{\restriction}[2]{#1_{\mkern 1mu \vrule height 2ex\mkern2mu #2}}
+
+%       Logic
+\renewcommand{\iff}{\Leftrightarrow}    % Short iff arrow.
+\renewcommand{\implies}{\Rightarrow}    % Left arrow.
+\renewcommand{\impliedby}{\Leftarrow}   % Right arrow.
+
+%       Algebra
+\newcommand*\quot[2]{{^{\textstyle #1}\Big/_{\textstyle #2}}} % Quotient group
+\newcommand*\quotSmall[2]{{^{\textstyle #1}\big/_{\textstyle #2}}} % Quotient group
+
+%       Analysis
+\newcommand{\diff}[2]{\frac{d#1}{d#2}}                   % Differentiation d/dx .
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}  % Partial d/dx.
+\newcommand{\supp}[2]{\sup_{\substack{ #1 } } #2}        % Supremum with substack.
+\newcommand{\inff}[2]{\inf_{\substack{ #1 } } #2}        % Infimum with substack.
+\newcommand{\limm}[2]{\lim_{\substack{ #1} }  #2}        % Limit with substack.
+\newcommand{\norm}[1]{\lVert #1 \rVert}                  % Norm.
+\newcommand{\abs}[1]{\lvert#1\rvert}                     % Absolute value.
+\newcommand{\Int}[4]{\int_{#1}^{#2}\!{#3}\,d{#4}}        % Integral with proper spacing.
+
+%       Sequences
+\newcommand{\seq}[3]{(#1_{#2})_{#2 \in #3}} 				% Sequence (element, index, indexset)
+\newcommand{\family}[3]{\{#1_{#2}\}_{#2 \in #3}} 			% Family (element, index, indexset)
+\newcommand{\fsets}[2]{#1_1, \ldots, #1_{#2}} 			 	% Finitely many sets (set, numberOfSets)
+\newcommand{\funion}[2]{#1_1 \cup \ldots \cup #1_{#2}} 		% Finite union of sets (set, numberOfSets)
+\newcommand{\finter}[2]{#1_1 \cap \ldots \cap #1_{#2}}  	% Finite intersection of sets (set, numberOfSets)
+\newcommand{\fprod}[2]{#1_1 \times \ldots \times #1_{#2}} 	% Finite product (set, numberOfSets)
+\newcommand{\isets}[1]{#1_1, #1_2, \ldots} 			 		% Infinitely many sets (set)
+\newcommand{\iprod}[1]{#1_1 \times #1_2 \times \ldots} 		% Infinite product (set)
+\newcommand{\ball}[3]{\operatorname{B}_{#1}(#2, #3)}		% Ball (set, center, radius)
+
+%       Article specific
+\newcommand{\moduliS}{\mathcal{M}_{FG}^s}
+\newcommand{\moduli}{\mathcal{M}_{FG}}
+\newcommand{\moduliH}{\widehat{\mathcal{M}}_{FG}}
+\newcommand{\Spp}{\mathcal{D}(\mathbb{S}_p)}
+%\DeclareMathOperator{Spec}{Spec}
+
+\author{Jon Lindegaard Holmberg}
+\title{Recollement and Localisation\\Topics in Algebraic Topology}
+
+\rhead{Jon Lindegaard Holmberg}
+\lhead{TopTop 2019/2020}
+\chead{Talk ...}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+In this short article we use recollement in the sense of \todo{litterature} to look at chromatic homotopy theory, and consider a special case of this as Bousfield localisation of $p$-complete spectra using localisation as Bousfield describes in his article \todo{litterature}.
+\begin{notation}
+  We let $MU$ denote the spectrum representing complex cobordism cohomology theory as usual, and $\mathcal{D} (\Sph_p)$ denote the stable $\infty$-category of $p$-complete spectra. One could also write this as $\operatorname{Sp}_p$, but we will refrain from that.
+\end{notation}
+In section \ref{Subsection:recollementpcompletespectra} we will work in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$. This is a pointed $\infty$-category by the zero category, but it is not stable itself. In this category we will work with \textit{Verdier sequences} which are defined as follows
+
+\begin{definition}
+  A \textit{Verdier sequence} in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$ is a bicartesian square
+  \[
+    \begin{tikzcd}
+      X \arrow{r}{} \arrow{d}{} & Y \arrow{d}{} \\
+       0 \arrow{r}{} & Z
+    \end{tikzcd}
+  \]
+  in $\Cat_{\text{st}}^\infty$. Here $Z$ is called the \textit{Verdier quotient}, and can be written as $Y/X$.
+\end{definition}
+
+\section{Chromatic homotopy theory}
+
+Consider the natural inclusions $MU \overset{d_0}{\to} MU \otimes MU \overset{d_1}{\leftarrow} MU$. We have a pushout of $MU$ using the fact that $MU$ only has homotopy groups in even degrees (due to Quillen, see Luries lecture notes lecture 7), so that $\pi_*(MU)$ is a commutative ring.
+
+\begin{center}
+\begin{tikzcd}
+\operatorname{Spec}(\pi_{*}(MU\otimes MU)) \arrow[rr, "d^1"] \arrow[dd, "d^0 "] &  & \operatorname{Spec}(\pi_{*}(MU)) \arrow[dd] \\ &  & \\
+\operatorname{Spec}(\pi_{*}(MU)) \arrow[rr] &  & \mathcal{M}^s_{FG}
+\end{tikzcd}
+\end{center}
+defining $\moduliS$ as a quotient $\Spec(\pi_{*}(MU))/\sim $. This is the \textit{moduli stack of formal groups with strict isomorphisms}. Note that $\moduliS$ is a $\mathbb{G}_m$-torsor with action given by the grading. This is because applying $\Spec$ to the grading
+\[
+\pi_* MU \to \Z [ t^{\pm 1} ] \otimes_\Z \pi_* MU
+\]
+yields the action
+\[
+\mathbb{G}_m \times \Spec (\pi_* MU) \to \Spec (\pi_* MU).
+\]
+
+\begin{definition}
+  The \textit{moduli stack of formal groups} $\moduli$ is the quotient of $\moduliS$ by the $\mathbb{G}_m$-action.
+\end{definition}
+
+Now if $X$ is a spectrum, then $\pi_{2*}(MU \otimes X)$ is an $(\pi_* MU, \pi_*(MU \otimes_\Sph MU))$-module and so as we have seen, it corresponds to a quasicoherent $\mathcal{O}_{\moduliS}$-module we denote by $\mathcal{F}_X$. \todo{write out descent data}
+
+For a formal group law $f\in R[[x,y]]$ over a $\Z_{(p)}$ algebra $R$ one can define its \emph{height} which is roughly the smallest index where the $p$-series coefficients are non-zero. This notion will lead to a filtration or stratification of $\mathcal{M}^s_{FG}$ by height.
+
+Consider the formal completion
+\[
+\moduliH := "\colim_n" \moduli \times_{\Spec (\Z)} \Spec(\Z /p^n)
+\]
+of $\moduli$ along $p$. This has a stratification of closed sub-ind-stacks
+\[
+\cdots \subset \moduliH^{\ge 2} \subset \moduliH^{\ge 1}  \subset \moduliH^{\ge 0} = \moduliH
+\]
+called \textit{the height stratification} of $\moduliH$. As we will see next, we can use the height stratification to define a filtration on the stable $\infty$-category of $p$-complete spectra $\Spp$.s
+
+\subsection{Recollements of $p$-complete spectra}\label{Subsection:recollementpcompletespectra}
+
+We can define a filtration $\operatorname{Fil}^h \Spp$ of $\Spp$, and each such filtration step fits into two recollement diagrams.
+\begin{definition}
+  Let
+  \[
+  \Spp^{\ge h} := \operatorname{Fil}^h \Spp \subset \Spp
+  \]
+  be the full subcategory spanned by all $p$-complete spectra $X$ such that the associated quasicoherent sheaves (see above) $\mathcal{F}_X$ and $\mathcal{F}_{\Sigma X}$ are supported on $\moduliH^{\ge h}$, and let $i_\vee$ denote the inclusion $\Spp^{\ge h} \hookrightarrow \Spp$
+\end{definition}
+Denote the Verdier quotient $D(\mathbb{S}_p)/D(\mathbb{S}_p)^{\ge h+1}$ by $D(\mathbb{S}_p)^{\le h}$ and so we have a Verdier sequence
+\[
+D(\mathbb{S}_p)^{\ge h+1} \overset{i_\vee}{\hookrightarrow} D(\mathbb{S}_p) \overset{j^*}{\to} D(\mathbb{S}_p)^{\le h}.
+\]
+Now $j^*$ admits a right adjoint $j_*$, \todo{why?} and $j_*j^*$ is smashing (Lurie, lecture 23, Theorem 4), so $j_*$ admits a right adjoint.  Applying the Recollement results we have seen earlier we get a diagram
+\iffalse
+\begin{center}
+  \begin{tikzcd}
+    X \arrow[dr, shift left=1ex, "i_\vee"] & & \\
+    & X \arrow{r} \arrow[ul, shift right=1ex, "i_\vee"] & X \\
+    X \arrow{ur} & &
+  \end{tikzcd}
+\end{center}
+\fi
+
+\begin{center}
+  \label{SppRecollement1}
+  \begin{tikzcd}[sep = large]
+  \Spp^{\ge h+1} \arrow[dr, shift left=1ex, "i_\vee"] \arrow[dd, shift right=1.5ex, "i^\wedge i_\vee"'] \\
+
+  {} & \Spp  \arrow[dl,shift  right=1ex, "i^\wedge" description]  \arrow[ul, shift left=1ex, "i^\vee"]  \arrow[r, bend left, "j^*"] \arrow[r, above, bend right, "j^\times"] & \arrow{l}{}[swap]{j_*} \Spp^{\le h} \\
+
+  \Spp/ \Spp^{\le h} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
+  \end{tikzcd}
+\end{center}
+where in particular we have a Verdier sequence
+\[
+\Spp^{\le h} \toWithMapLong{j_*} \Spp \toWithMapLong{i^\wedge} \Spp / \Spp^{\le h}.
+\]
+The categories present in this diagram are important in chromatic homotopy theory, and so they are given specific names:
+\begin{definition}
+In the diagram (\ref{SppRecollement1}) we say that objects of $\Spp^{\le h}$ are $E(h)$\textit{-local} objects, objects of the cofiber $\Spp/\Spp^{\le h}$ are \textit{complete away from} $E(h)$ and objects of $\Spp^{\ge h+1}$ are $E(h)$\textit{-acyclic}. \todo{Relate to Morava E, K theory}
+\end{definition}
+We can use this recollement, to construct another also recollement diagram \todo{why + fix notation of maps}
+\begin{center}
+    \begin{tikzcd}[sep = large]
+    \Spp^{\ge h}/D(\mathbb{S}_p)^{\ge h+1} \arrow[dr, shift left=1ex, "i_\vee"] \arrow[dd, shift right=1.5ex, "i^\wedge i_\vee"'] \\
+
+    {} & \Spp^{\le h}  \arrow[dl,shift  right=1ex, "i^\wedge" description]  \arrow[ul, shift left=1ex, "i^\vee"]  \arrow[r, bend left, "j^*"] \arrow[r, above, bend right, "j^\times"] & \arrow{l}{}[swap]{j_*} \Spp^{\le h-1} \\
+
+    \Spp^{\le h}/\Spp^{\le h-1} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
+    \end{tikzcd}
+\end{center}
+
+\begin{definition}
+In the diagram above we say that objects of $\Spp^{\ge h}/\Spp^{\ge h+1}$ are \textit{monochromatic of level h} and that objects of $\Spp^{\le h}/\Spp^{\le h-1}$ are $K(h)$\textit{-local}.
+\end{definition}
+From now on we work with the maps in the last diagram. Notice that the equivalence in the last recollement diagram is basically just a rule of fractions. In this diagram the unit $\operatorname{id} \to j_*j_*$ is $E(h)$\textit{-localisation} and we denote the component maps as $X \mapsto L_{E(h)}X$, and similarly component maps of $\operatorname{id} \to i_\wedge i^\wedge$ are denoted as $X \mapsto L_{K(h)}X$. These are the Bousfield localisation functors w.r.t. the spectra $E(h)$ and $K(h)$. The Recollement (cartesian) square
+\begin{center}
+    \begin{tikzcd}
+    \operatorname{id} \arrow{r} \arrow{d} & i_\wedge i^\wedge \arrow{d} \\
+    j_*j^* \arrow{r} & j_*j^*i_\wedge i^\wedge
+    \end{tikzcd}
+\end{center}
+then tells us that we can recover $E(h)$-localisation $L_{E(h)}X$ of an object $X$ as a pullback
+\begin{center}
+    \begin{tikzcd}
+    L_{E(h)}X \arrow{r} \arrow{d} & L_{K(h)}X \arrow{d} \\
+    L_{E(h-1)}X \arrow{r} & L_{E(h-1)}L_{K(h)}X
+    \end{tikzcd}
+\end{center}
+since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$ (also $L_{K(h)}L_{E(h)}X = L_{K(h)}X$? \todo{? + more about chromatic homotopy theory}).
+
+\section{Bousfield localisation of $p$-complete spectra}
+
+As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \todo{ref} concerns the case of $E(1)$-localisations, also know as $KU_p$-localisation for a prime $p$. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra for a prime $p$. In this case latter recollement diagram above then looks as follows. \todo{do we need this recollement square?}
+\begin{center}
+    \begin{tikzcd}[sep = large]
+    D(\mathbb{S}_p)^{\ge 1}/D(\mathbb{S}_p)^{\ge 2} \arrow[dr, shift left=1ex, "i_\vee"] \arrow[dd, shift right=1.5ex, "i^\wedge i_\vee"'] \\
+
+    {} & D(\mathbb{S}_p)^{\le 1}  \arrow[dl,shift  right=1ex, "i^\wedge" description]  \arrow[ul, shift left=1ex, "i^\vee"]  \arrow[r, bend left, "j^*"] \arrow[r, above, bend right, "j^\times"] & \arrow{l}{}[swap]{j_*} D(\mathbb{S}_p)^{\le 0} \\
+
+    D(\mathbb{S}_p)^{\le 1}/D(\mathbb{S}_p)^{\le 0} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
+    \end{tikzcd}
+\end{center}
+Denote $j_*j^*$ by $L_{E(1)}$ as before. Bousfield mentions two results in his article which will be crucial to our calculations. These are the contents of following two theorems.
+\begin{theorem}[Adams-Baird, Ravenel]\label{Adams-Baird, Ravenel}
+  $E(1)$-localisation is smashing, i.e. $L_{E(1)}X \simeq X \otimes L_{E(1)} \mathbb{S}_p$. Equivalently, this says that $X \to X \otimes L_{E(1)} \mathbb{S}_p$ is an $E(1)$-localisation
+\end{theorem}
+In particular, Theorem \ref{Adams-Baird, Ravenel} says that we get a recollement square like above.
+\begin{theorem}[Mahowald for $p=2$, Miller for $p$ odd]\label{Mahowald, Miller}
+     The units of the $p$-adic integers $\Z_p^*$ acts on $E(1)$ by taking a unit $g \in \Z_p^*$ to the Adam's operation $\psi^g$ (see \todo{ref}). The homotopy fix points of this action satisfy that
+     $$L_{E(1)}\mathbb{S}_p \simeq E(1)^{h\Z_p^*}.$$
+\end{theorem}
+Combining Theorem \ref{Adams-Baird, Ravenel} and \ref{Mahowald, Miller} lets us understand the $E(1)$-localisation of $p$-complete spectra simply by understanding the $E(1)$-localisation of the $p$-complete sphere spectrum $\mathbb{S}_p$. This is the contents of the rest of the article.
+\begin{corollary}\label{Cor:E(1)local}
+  If $X$ is a $p$-complete spectrum, then the $E(1)$-localisation of $X$ is given by
+  \[
+    L_{E(1)} X \simeq X \otimes E(1)^{h\Z_p^*}.
+  \]
+\end{corollary}
+
+\subsection{$E(1)$-localisation of the $p$-complete sphere spectrum}
+
+We understand a spectrum, by understanding its homotopy groups. The calculations we will do in this section with show the following theorem
+\begin{theorem}
+ If $p$ is an odd prime \todo{p=2} then
+ \[
+  \pi_n E(1)^{h\Z_p^*} \simeq
+    \begin{cases}
+    \Z_p, & n=0,-1 \\
+    \Z/p^{v_p(n)+1}\Z_p, & p-1 \text{ divides } n \\
+    0, & \text{otherwise}
+    \end{cases}
+  \]
+  where $v_p$ is $p$-adic valuation.
+\end{theorem}
+
+\begin{remark}
+  The homotopy groups of $E(1)$ are concentrated in the even degrees, and in fact $\pi_{2n}E(1) \simeq \Z_p(n)$, where the latter $n$ is for keepeing track on which homotopy group of $E(1)$ we're working with. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
+\end{remark}
+
+\subsubsection{$p$ odd}
+
+When $p$ is an odd prime, the $p$-adic units $\Z_p^*$ is topologically cyclic \todo{find out why}, and so we can choose a topological generator $g \in \Z_p^*$. This topological generator will be fixed in this section. Our first intermediate result is the following
+\begin{proposition}
+  If $p$ is an odd prime, then
+  \[
+   \pi_n E(1)^{h\Z_p^*} \simeq
+     \begin{cases}
+     \Z_p, & n=0,-1 \\
+     \coker (g^n - \id), & -1 \neq n \text{ and $n$ odd} \\
+     0, & \text{otherwise.}
+     \end{cases}
+   \]
+   where \todo{negative n also?} $g^n \colon \Z_p(n) \to \Z_p(n)$ is multiplication with $g^n$.
+\end{proposition}
+\begin{proof}
+There are different ways to show this proposition. We will use the \textit{homotopy fixed points spectral sequence} \todo{ref}, which states that for a spectrum $X$ with a $G$-action for a group $G$, there is a spectral sequence with
+\[
+E^2_{i,j} = H^{-i}(BG, \pi_j(X)) \implies \pi_{i+j}(X^{hG}).
+\]
+In our case, $\Z_p^*$ acts on $E(1)$ and $\Z_p^*$ is topologically cyclic so the spectral sequence looks like
+\[
+E^2_{i,j} = H_c^{-i}(B\Z_p^*, \pi_j(E(1))) \implies \pi_{i+j}(E(1)^{h\Z_p^*}),
+\]
+where $H_c$ denotes continuous cohomology. Now using that the homotopy groups of $E(1)$ are concentrated in even degrees, we have that
+\[
+  H^i_c(B\Z_p^*, \pi_j(E(1))) =
+\begin{cases}
+\ker (g^j - \id), & i=0 \text{ and } j \text{ even} \\
+\coker (g^j - \id), & i=1 \text{ and } j \text{ even} \\
+0, & \text{otherwise.}
+\end{cases}
+\]
+where $g^j \colon \Z_p(n) \to \Z_p(n)$ is multiplication by $g^j$. Looking at the second page of the spectral sequence \todo{draw?} we notice immediately that there are no non-trivial differentials, and in fact this is the case for any page $E^k$ for $k \ge 2$. So we can simply read \todo{reformulate} the homotopy groups as follows. First of all
+\begin{align*}
+  \pi_0 E(1)^{h\Z_p^*} & \cong  H^0_c(B\Z_p^*, \pi_0 E(1)) \\
+    & \cong \ker (\Z_p(0) \toWithMapLong{0} \Z_p(0)) \\
+    & \cong \Z_p
+\end{align*}
+and similarly,
+\begin{align*}
+  \pi_{-1} E(1)^{h\Z_p^*} & \cong  H^1_c(B\Z_p^*, \pi_0 E(1)) \\
+    & \cong \coker (\Z_p(0) \toWithMapLong{0} \Z_p(0)) \\
+    & \cong \Z_p.
+\end{align*}
+When $j \neq 0$, $g^j - \id$ is an injection, and so $\ker(g^j - \id) = 0$. Hence
+\begin{align*}
+  \pi_{2j} E(1)^{h\Z_p^*} & \cong  H^0_c(B\Z_p^*, \pi_{2j} E(1)) \\
+    & \cong \ker (\Z_p(j) \toWithMapLong{g^j - \id} \Z_p(j)) \\
+    &  = 0
+\end{align*}
+Finally for $j \neq 0$, we have that
+\begin{align*}
+  \pi_{2j-1} E(1)^{h\Z_p^*}  \cong  H^1_c(B\Z_p^*, \pi_2j E(1))
+    \cong \coker (\Z_p(j) \toWithMapLong{g^j - \id} \Z_p(j))
+\end{align*}
+which completes the proof of the proposition.
+\end{proof}
+What remains in our calculations is to identify the cokernel of $g^n-\id$ when $n \neq 0$. This requires some work with the $p$-adic integers, and will be the contents of our next lemma.
+
+\begin{remark}
+  We do a quick recollection of some needed propertis of the $p$-adic integers. \todo{definition} Concretely, we can write a $p$-adic integer $x$ on the form
+  \[
+    x=\sum_{n = 0}^\infty a_n p^n
+  \]
+  where $ 0 \le a_n \le p-1$ for all $n$.
+  An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$. We can define the \textit{$p$-adic valuation} function $v_p \colon \Z_p \to \Z \cup \{\infty\}$ as follows. Every $p$-adic integer $x \in \Z_p$ can be uniquely written as $x = up^n$ where $u$ is a $p$-adic unit and $n$ is a non-negative integer. Set $v_p(x) = n$, with the convention that $v_p(0) = \infty$.
+\end{remark}
+
+\begin{lemma}
+  When $n$ is a non-zero \todo{positive?} integer then
+  \[
+    \coker(g^n - \id) \cong \Z/p^{v_p(n)+1}\Z_p
+  \]
+  when $p-1$ divides $n$ and zero otherwise.
+\end{lemma}
+\begin{proof}
+We have a short exact sequence \todo{why}
+\[
+\begin{tikzcd}
+0 \rar & \Z_p \rar{g^n - \operatorname{id}} & \Z_p \rar{} & \Z_p/{p^{v_p(g^n-1)}\Z_p} \rar & 0
+\end{tikzcd}
+\]
+and so we study $\Z_p/{p^{v_p(g^n-1)}\Z_p}$, and more specifically $v_p(g^n-1)$. The mod $p$ map $\Z_p^* \to \F_p^*$ is surjective, and thus fits into a short exact sequence
+\[
+\begin{tikzcd}
+1 \rar & (1+p\Z_p)^* \rar{} & \Z_p^* \rar{} & \F_p^* \rar & 1
+\end{tikzcd}
+\]
+Now since $g$ is a $p$-adic unit, $p$ does not divide $g$ and so $g^n \equiv 1$ mod $p$ if, and only if, $p-1$ divides $n$. We split the proof in two cases.
+
+First, consider the case where $p-1$ does not divide $n$. Then $g^n -1 \not\equiv 0$ mod $p$, which means that $g^n -1$ is a unit mod $p$, so that $v_p(g^n - 1) = 0$. Hence
+\[
+\coker ( g^n - \id ) = 0.
+\]
+
+Now consider the case where $p-1$ divides $n$. This means that $g^n \equiv 1$ mod $p$, and so $g^n$ is in the kernel of the mod $p$ map, i.e. $g^n \in (1 + p\Z_p)^*$. We can then write $g^n = (g^{p-1})^{n/(p-1)}$ and since $g$ is a topological generator, so is $g^{p-1} \in (1 + p\Z_p)^*$. Since $p$ is odd, we have isomorphisms
+\[
+\begin{tikzcd}
+  (1+ p\Z_p)^* \arrow[d, "\log"', "\sim", shift right=1.3ex] \\
+  p\Z_p \arrow[u, "\exp"', shift right = 1.3ex]{exp}
+\end{tikzcd}
+\]
+Hence the topological generator $g^{p-1}$ is sent to a topological generator of $p\Z_p$. Such a generator is of the form $pu$ where $u$ is a $p$-adic unit. But if $g^{p-1} \mapsto pu$ then $g^n \mapsto \frac{n}{p-1}pu$ under $\log$, and $$v_p\left(\frac{n}{p-1}pu\right) = v_p(n)+1.$$ We conclude that
+\[
+v_p(g^n - 1 ) = v_p(n) + 1
+\]
+which finishes the proof.
+\end{proof}
+Combining these two results finishes our calculations when $p$ is odd.
+
+\subsubsection{$p$ even}
+
+When $p=2$, then we cannot use the same argument to say that $\Z_2^*$ is topologically cyclic. Instead, notice that $\Z_2^* \cong (1 + 2\Z_2)^*$ and consider the short exact sequence
+\[
+\begin{tikzcd}
+  1 \arrow{r} & (1 + 4\Z_2)^* \arrow{r} & (1+2\Z_2)^* \arrow{r} & \{\pm 1\} \rar & 1
+\end{tikzcd}
+\]
+where the last non-trivial map is mod $2$. This splits since we can lift $-1$ to $1 + (-1)2$, and since $(1 + 4\Z_2)^* \cong 4\Z_2$ we obtain that
+\[
+\Z_2^* \cong 4\Z_2 \times \{\pm 1\}.
+\]
+
+\subsubsection{Extra}
+
+We know \todo{from where?} that $\pi_{2n}(E(1)) = \Z_p$ the $p$-adic integers, and $\pi_{2n+1}(E(1)) = 0$ and we have a fiber sequence by (2)
+\[
+\begin{tikzcd}
+L_{E(1)} \Sph_p \rar & E(1) \rar{\psi_g - \operatorname{id}} & E(1).
+\end{tikzcd}
+\]
+Hence the long exact sequence of homotopy groups looks like
+\[
+\begin{tikzcd}
+\cdots \rar & \Z_p \rar{\psi^g - \operatorname{id}} & \Z_p \rar{} & \pi_{2n-1}(L_{E(1)}\Sph_p) \rar & 0 \rar & \cdots
+\end{tikzcd}
+\]
+Notice that $\psi^n = g^n$, so if $n=0$ then $\psi^n - \operatorname{id} = 0$ and so $\pi_{-1}L_{E(1)}\Sph_p \simeq \pi_{0}L_{E(1)}\Sph_p \simeq \Z_p$. If $n \neq 0$, then $g^n - \operatorname{id} \neq 0$ and $\psi^n - \operatorname{id}$ is therefore always injective. So the LES above reduces to short exact sequences
+\[
+\begin{tikzcd}
+0 \rar & \Z_p \rar{\psi^g - \operatorname{id}} & \Z_p \rar{} & \pi_{2n-1}(L_{E(1)}\Sph_p) \rar & 0
+\end{tikzcd}
+\]
+In particular we see that the even homotopy groups of $L_{E(1)}\Sph_p$ vanish. But we also have a short exact sequence given the cokernel of $\psi^g-\operatorname{id}$
+\[
+\begin{tikzcd}
+0 \rar & \Z_p \rar{\psi^g - \operatorname{id}} & \Z_p \rar{} & \Z_p/{p^{v_p(g^n-1)}\Z_p} \rar & 0
+\end{tikzcd}
+\]
+where $v_p \colon \Z_p \to \Z \cup \{\infty\}$ is the $p$-adic valuation (reduction). It works as follows. For each element $x \in \Z_p$ we can uniquely write $x=up^k$ where $u$ is a unit of $\Z_p$, and we define $v_p(x) = k$. From this we conclude that
+\[
+\pi_{2n-1}(L_{E(1)}\Sph_p) \simeq \Z_p/{p^{v_p(g^n-1)}\Z_p}
+\]
+and so we turn our attention to the units of $\Z_p$ to better understand $\Z_p/{p^{v_p(g^n-1)}\Z_p}$. \todo{or since htpy fixed points?}
+
+The units of $\Z_p$ fits into a short exact sequence
+\[
+\begin{tikzcd}
+1 \rar & (1+p\Z_p)^* \rar{} & \Z_p^* \rar{} & \F_p^* \rar & 1
+\end{tikzcd}
+\]
+where the map $\Z_p^* \to \F_p^*$ is modulo $p$. Notice that since $p$ does not divide $g$, \todo{since $g$ was chosen in $\Z_p^*$?} $g^n$ is sent to $1 \in \F_p^*$, iff $(p-1)$ divides $n$. So if $p-1$ does not divide $n$ (then $p$ does not divide $g^n$?), this means that $v_p(g^n-1)=0$, since we can write $g^n = p^k +1$ for some $k$. So in this case
+\[
+\pi_{2n-1}(L_{E(1)}\Sph_p) \simeq \Z_p/{p^{v_p(g^n-1)}\Z_p} \simeq 0
+\]
+
+The final case is when $p-1$ divides $n$. Then we can write
+\[
+g^n = {(g^{p-1})}^{n/(p-1)}
+\]
+which is now an element of the kernel $1+p\Z_p$.
+
+Have action $\Z_p^* \to \operatorname{Aut}(E(1))$ by $k \mapsto \psi^k$
+and Bousfield computes $L_{E(1)}\Sph_p \simeq E(1)^{h\Z_p^*}$, so we're interested in these homotopy fixed points \todo{this is equivalent to the fiber seq above?}
+
+\end{document}

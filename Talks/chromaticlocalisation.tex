@@ -34,9 +34,9 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{hw}{HW.}
-%\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
-\newtheorem{notation}{Notation}
+%\theoremstyle{remark}
+\newtheorem*{notation}{Notation}
 \newenvironment{parts}[1]{\par\noindent\textbf{Part\space#1}}{}
 \newenvironment{sketch}{\noindent\textit{Sketch of proof.}}{\hfill$\square$}
 
@@ -157,11 +157,14 @@
 \tableofcontents
 
 \section{Introduction}
-In this short article we use recollement in the sense of \cite{barwickglasman} to look at chromatic homotopy theory, and consider a special case of this as Bousfield localisation of $p$-complete spectra using localisation as Bousfield describes in \cite{bousfield1979localization}.
+In this article we use recollement in the sense of \cite{barwickglasman} to describe chromatic homotopy theory, and consider the special case of Bousfield localisation of $p$-complete spectra using localisation as Bousfield describes in \cite{bousfield1979localization}.
+
+Section \ref{Section:chromhtpytheory} will give a short introduction to chromatic homotopy theory using \textit{the moduli stack of formal groups} and recollements of $p$-complete spectra. We do not show any proofs, but rather a brief exposition. We show two recollement diagrams which leads to the definition of $E(n)$-localisation and $K(n)$-localisation seen in Morava $E$ and $K$-theory. These localisation functors are essential to chromatic homotopy theory. In section \ref{Section:bousfieldlocal} we will use results from \cite{bousfield1979localization}
+to describe $E(1)$-localisation of $p$-complete spectra. As it turns out, we can describe such localisation simply by considering the $E(1)$-localisation of the $p$-complete sphere spectrum $\Sph_p$.
 \begin{notation}
-  We let $MU$ denote the spectrum representing complex cobordism cohomology theory as usual, and $\mathcal{D} (\Sph_p)$ denote the stable $\infty$-category of $p$-complete spectra. One could also write this as $\operatorname{Sp}_p$, but we will refrain from that.
+  We let $\mathcal{D} (\Sph_p)$ denote the stable $\infty$-category of $p$-complete spectra. One could also write this as $\operatorname{Sp}_p$, but we will refrain from that.
 \end{notation}
-In section \ref{Subsection:recollementpcompletespectra} we will work in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$. This is a pointed $\infty$-category by the zero category, but it is \textit{not} stable itself. In this category we will work with \textit{Verdier sequences} which are defined as follows
+In section \ref{Subsection:recollementpcompletespectra} we will work in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$. This is a pointed $\infty$-category by the zero category, but it is \textit{not} stable itself. In this category we will work with \textit{Verdier sequences} which are defined below.
 
 \begin{definition}
   A \textit{Verdier sequence} in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$ is a bicartesian square
@@ -174,9 +177,17 @@ In section \ref{Subsection:recollementpcompletespectra} we will work in the $\in
   in $\Cat_{\text{st}}^\infty$. Here $Z$ is called the \textit{Verdier quotient}, and can be written as $Y/X$.
 \end{definition}
 
-\section{Chromatic homotopy theory}
+\section{Chromatic homotopy theory}\label{Section:chromhtpytheory}
 
-We start by a brief introduction to chromatic homotopy theory. The complex cobordism cohomology theory spectrum $MU$ only has homotopy groups in even degrees, and so $\pi_*(MU)$ is a graded commutative ring. If we consider the natural inclusions $$MU \overset{d_0}{\to} MU \otimes MU \overset{d_1}{\leftarrow} MU,$$ we can form a pushout
+We start by a brief introduction to chromatic homotopy theory. Chromatic homotopy theory studies stable homotopy theory, and in particular complex oriented cohomology theories such as the complex cobordism theory spectrum $MU$. We study such spectra by means of what is called the \textit{chromatic filtration}. As we will see this chromatic filtration is induced by a height filtration of formal groups. In particular, the localisation $L_{E(n)}$ along the Morava $E$-theories $E(n)$ fits into a chromatic tower
+\[
+X \toWithMapLong{} \cdots \toWithMapLong{} L_{E(n)}X \toWithMapLong{} L_{E(n-1)}X \toWithMapLong{} \cdots \toWithMapLong{} L_{E(0)}X
+\]
+where $X$ is a spectrum. These piece can be obtained from localisation along Morava $K$-theories. We will see this in the case where $X$ is a $p$-complete spectrum. Moreover \textit{the chromatic convergence theorem} describes when the homotopy limit over this tower is the $p$-localisation of $X$. We will not consider this theorem.
+
+\subsection{The moduli stack of formal groups}
+
+We start by turning to the the complex cobordism cohomology theory spectrum $MU$, which is universal among such complex oriented cohomology theories. Notice that $MU$ only has homotopy groups in even degrees, and so $\pi_*(MU)$ is a graded commutative ring. If we consider the natural inclusions $$MU \overset{d_0}{\to} MU \otimes MU \overset{d_1}{\leftarrow} MU,$$ we can form a pushout
 
 \begin{center}
 \begin{tikzcd}
@@ -283,7 +294,7 @@ is important in this case. Recall that this is a cartesian square, so it gives u
 \end{center}
 since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$. Furthermore, such a cartesian square gives a long exact sequence of homotopy groups which can be quite useful.
 
-\section{Bousfield localisation of $p$-complete spectra}
+\section{Bousfield localisation of $p$-complete spectra}\label{Section:bousfieldlocal}
 
 As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \cite{bousfield1979localization} concerns the case of $E(1)$-localisations, also known as $KU_p$-localisation for a prime $p$. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra for a prime $p$. In this case, the latter recollement diagram above then looks as follows. \todo{do we need this recollement square?}
 \begin{center}
@@ -328,7 +339,7 @@ We understand a spectrum, by understanding its homotopy groups. The calculations
   where $v_p$ is $p$-adic valuation.
 \end{theorem}
 
-We do a quick recollection of some needed propertis of the $p$-adic integers. \todo{definition} Concretely, we can write a $p$-adic integer $x$ on the form
+We do a quick recollection of some needed propertis of the $p$-adic integers. Recall that $\Z_p$ is defined as the inverse limit $\Z_p := \varprojlim_m \Z/p^m$ in the category of rings. Concretely, we can write a $p$-adic integer $x$ on the form
 \[
   x=\sum_{n = 0}^\infty a_n p^n
 \]
@@ -374,7 +385,7 @@ In the remaining parts of this section, we will fix a topological generator $g \
    where \todo{negative n also?} $g^n \colon \Z_p(n) \to \Z_p(n)$ is multiplication with $g^n$.
 \end{proposition}
 \begin{proof}
-There are different ways to show this proposition. We will use the \textit{homotopy fixed points spectral sequence} \todo{ref}, which states that for a spectrum $X$ with a $G$-action for a group $G$, there is a spectral sequence with
+There are different ways to show this proposition. We will use the \textit{homotopy fixed points spectral sequence}, which states that for a spectrum $X$ with a $G$-action for a group $G$, there is a spectral sequence with
 \[
 E^2_{i,j} = H^{-i}(BG, \pi_j(X)) \implies \pi_{i+j}(X^{hG}).
 \]
@@ -391,7 +402,7 @@ where $H_c$ denotes continuous cohomology. Now using that the homotopy groups of
 0, & \text{otherwise.}
 \end{cases}
 \]
-where $g^j \colon \Z_p(n) \to \Z_p(n)$ is multiplication by $g^j$. Looking at the second page of the spectral sequence \todo{draw?} we notice immediately that there are no non-trivial differentials, and in fact this is the case for any page $E^k$ for $k \ge 2$. So we can simply read \todo{reformulate} the homotopy groups as follows. First of all
+where $g^j \colon \Z_p(n) \to \Z_p(n)$ is multiplication by $g^j$. Looking at the second page of the spectral sequence we notice immediately that there are no non-trivial differentials, and in fact this is the case for any page $E^k$ for $k \ge 2$. So we can easily determine the homotopy groups. First of all
 \begin{align*}
   \pi_0 E(1)^{h\Z_p^*} & \cong  H^0_c(B\Z_p^*, \pi_0 E(1)) \\
     & \cong \ker (\Z_p(0) \toWithMapLong{0} \Z_p(0)) \\
@@ -418,7 +429,7 @@ which completes the proof of the proposition.
 \end{proof}
 What remains in our calculations is to identify the cokernel of $g^n-\id$ when $n \neq 0$. This requires some work with the $p$-adic integers, and will be the contents of our next lemma. To state the lemma we need the notion of the \textit{$p$-adic valuation} function $v_p \colon \Z_p \to \Z \cup \{\infty\}$. Every $p$-adic integer $x \in \Z_p$ can be uniquely written as $x = up^n$ where $u$ is a $p$-adic unit and $n$ is a non-negative integer. Set $v_p(x) = n$, with the convention that $v_p(0) = \infty$.
 \begin{lemma}
-  When $n$ is a non-zero \todo{positive?} integer then
+  If $n$ is a positive integer then
   \[
     \coker(g^n - \id) \cong \Z/p^{v_p(n)+1}\Z_p
   \]

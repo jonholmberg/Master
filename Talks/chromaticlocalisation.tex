@@ -17,6 +17,8 @@
 \usepackage{todonotes}
 \usepackage{subfiles}
 
+\usepackage{spectralsequences}
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
@@ -159,7 +161,7 @@
 \section{Introduction}
 In this article we use recollement in the sense of \cite{barwickglasman} to describe chromatic homotopy theory, and consider the special case of Bousfield localisation of $p$-complete spectra using localisation as Bousfield describes in \cite{bousfield1979localization}.
 
-Section \ref{Section:chromhtpytheory} will give a short introduction to chromatic homotopy theory using \textit{the moduli stack of formal groups} and recollements of $p$-complete spectra. We do not show any proofs, but rather a brief exposition. We show two recollement diagrams which leads to the definition of $E(n)$-localisation and $K(n)$-localisation seen in Morava $E$ and $K$-theory. These localisation functors are essential to chromatic homotopy theory. In section \ref{Section:bousfieldlocal} we will use results from \cite{bousfield1979localization}
+Section \ref{Section:chromhtpytheory} will give a short introduction to chromatic homotopy theory using \textit{the moduli stack of formal groups} and recollements of $p$-complete spectra. We do not show any proofs, but give a brief exposition. We show two recollement diagrams which leads to the definition of $E(n)$-localisation and $K(n)$-localisation seen in Morava $E$ and $K$-theory. These localisation functors are essential to chromatic homotopy theory. In section \ref{Section:bousfieldlocal} we will use results from \cite{bousfield1979localization}
 to describe $E(1)$-localisation of $p$-complete spectra. As it turns out, we can describe such localisation simply by considering the $E(1)$-localisation of the $p$-complete sphere spectrum $\Sph_p$.
 \begin{notation}
   We let $\mathcal{D} (\Sph_p)$ denote the stable $\infty$-category of $p$-complete spectra. One could also write this as $\operatorname{Sp}_p$, but we will refrain from that.
@@ -226,12 +228,9 @@ called \textit{the height stratification} of $\moduliH$. As we will see next, we
 
 \subsection{Recollements of $p$-complete spectra}\label{Subsection:recollementpcompletespectra}
 
-We can define a filtration $\operatorname{Fil}^h \Spp$ of $\Spp$, and each such filtration step fits into two recollement diagrams.
+We can define a filtration $\operatorname{Fil}^h \Spp$ of $\Spp$, and each such filtration step fits into two recollement diagrams. These recollements define the fundamental objects of what is called Morava $E$ and $K$ theory, namely those of $E(n)$ and $K(n)$-local objects for a natural number $n$.
 \begin{definition}
-  Let
-  \[
-  \Spp^{\ge h} \subset \Spp
-  \]
+  Let $\Spp^{\ge h} \subset \Spp$
   be the full subcategory spanned by all $p$-complete spectra $X$ such that the associated quasi-coherent sheaves $\mathcal{F}_X$ and $\mathcal{F}_{\Sigma X}$ are supported on $\moduliH^{\ge h}$, and let $i_\vee$ denote the inclusion $\Spp^{\ge h} \hookrightarrow \Spp$.
 \end{definition}
 Now set $\operatorname{Fil}^h \Spp = \Spp^{\ge h}$ for each $h \ge 0$. This defines a filtration on $\Spp$. We have a Verdier sequence
@@ -257,15 +256,15 @@ where we denote the Verdier quotient $\Spp/\Spp^{\ge h+1}$ by $\Spp^{\le h}$. Th
   \Spp/ \Spp^{\le h} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
   \end{tikzcd}
 \end{equation}
-where in particular we have a Verdier sequence
+where
 \[
 \Spp^{\le h} \toWithMapLong{j_*} \Spp \toWithMapLong{i^\wedge} \Spp / \Spp^{\le h}.
 \]
-The categories present in this diagram are important in chromatic homotopy theory, and so the objects are given specific names.
+is a Verdier sequence. The categories present in this diagram are important in chromatic homotopy theory, and so the objects are given specific names.
 \begin{definition}
-In the recollement diagram (\ref{SppRecollement1}) we say that objects of $\Spp^{\le h}$ are $E(h)$\textit{-local} objects, objects of the cofiber $\Spp/\Spp^{\le h}$ are \textit{complete away from} $E(h)$ and objects of $\Spp^{\ge h+1}$ are $E(h)$\textit{-acyclic}. \todo{Relate to Morava E, K theory}
+In the recollement diagram (\ref{SppRecollement1}) we say that objects of $\Spp^{\le h}$ are $E(h)$\textit{-local} objects, objects of the cofiber $\Spp/\Spp^{\le h}$ are \textit{complete away from} $E(h)$ and objects of $\Spp^{\ge h+1}$ are $E(h)$\textit{-acyclic}.
 \end{definition}
-We can use this recollement, to construct another also recollement diagram \todo{why + fix notation of maps}
+The objects of this recollement fits into another recollement, which constructs the $K(h)$-local objects used in Morava K theory.
 \begin{equation}
   \label{SppRecollement2}
     \begin{tikzcd}[sep = large]
@@ -285,47 +284,31 @@ From now on we work with the maps in the last diagram. Notice that the equivalen
     j_*j^* \arrow{r} & j_*j^*i_\wedge i^\wedge
     \end{tikzcd}
 \end{center}
-is important in this case. Recall that this is a cartesian square, so it gives us that we can recover $E(h)$-localisation $L_{E(h)}X$ of an object $X$ as a pullback
+is important in this case. Recall that this is a cartesian square, so we can recover $E(h)$-localisation $L_{E(h)}X$ of an object $X$ as a pullback
 \begin{center}
     \begin{tikzcd}
     L_{E(h)}X \arrow{r} \arrow{d} & L_{K(h)}X \arrow{d} \\
     L_{E(h-1)}X \arrow{r} & L_{E(h-1)}L_{K(h)}X
     \end{tikzcd}
 \end{center}
-since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$. Furthermore, such a cartesian square gives a long exact sequence of homotopy groups which can be quite useful.
+since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$. Furthermore, such a cartesian square gives a long exact sequence of homotopy groups which can be quite useful. In (\cite{luriechromatichomotopytheorynotes}, Lecture 35) Lurie uses these facts to compute the $K(1)$ and $E(1)$-localisation of the sphere spectrum $\Sph$.
 
 \section{Bousfield localisation of $p$-complete spectra}\label{Section:bousfieldlocal}
 
-As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \cite{bousfield1979localization} concerns the case of $E(1)$-localisations, also known as $KU_p$-localisation for a prime $p$. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra for a prime $p$. In this case, the latter recollement diagram above then looks as follows. \todo{do we need this recollement square?}
-\begin{center}
-    \begin{tikzcd}[sep = large]
-    \Spp^{\ge 1}/\Spp^{\ge 2} \arrow[dr, shift left=1ex, "i_\vee"] \arrow[dd, shift right=1.5ex, "i^\wedge i_\vee"'] \\
-
-    {} & \Spp^{\le 1}  \arrow[dl,shift  right=1ex, "i^\wedge" description]  \arrow[ul, shift left=1ex, "i^\vee"]  \arrow[r, bend left, "j^*"] \arrow[r, above, bend right, "j^\times"] & \arrow{l}{}[swap]{j_*} \Spp^{\le 0} \\
-
-    \Spp^{\le 1}/\Spp^{\le 0} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
-    \end{tikzcd}
-\end{center}
-Denote $j_*j^*$ by $L_{E(1)}$ as before. Bousfield mentions two results in \cite{bousfield1979localization} which will be crucial to our calculations. These are the contents of following two theorems.
+As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \cite{bousfield1979localization} concerns the case of $E(1)$-localisations, also known as $KU_p$-localisation for a prime $p$. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra. Bousfield mentions two results in \cite{bousfield1979localization} which will be crucial to our calculations. These are the contents of following two theorems.
 \begin{theorem}[Adams-Baird, Ravenel]\label{Adams-Baird, Ravenel}
   $E(1)$-localisation is smashing, i.e. $L_{E(1)}X \simeq X \otimes L_{E(1)} \mathbb{S}_p$. Equivalently, this says that $X \to X \otimes L_{E(1)} \mathbb{S}_p$ is an $E(1)$-localisation
 \end{theorem}
-In particular, Theorem \ref{Adams-Baird, Ravenel} says that we get a recollement square like above.
+In particular, Theorem \ref{Adams-Baird, Ravenel} says that we get a recollement square (\ref{SppRecollement2}) for $h=1$. The units of the $p$-adic integers $\Z_p^*$ acts on $E(1)$ by taking a unit $g \in \Z_p^*$ to the Adam's operation $\psi_g$, and this action turns out to very important to our calculations.
 \begin{theorem}[Mahowald for $p=2$, Miller for $p$ odd]\label{Mahowald, Miller}
-     The units of the $p$-adic integers $\Z_p^*$ acts on $E(1)$ by taking a unit $g \in \Z_p^*$ to the Adam's operation $\psi^g$. The homotopy fix points of this action satisfy that
+   The homotopy fix points of the action of $\Z_p^*$ on $E(1)$ satisfy that
      $$L_{E(1)}\mathbb{S}_p \simeq E(1)^{h\Z_p^*}.$$
 \end{theorem}
 Combining Theorem \ref{Adams-Baird, Ravenel} and \ref{Mahowald, Miller} lets us understand the $E(1)$-localisation of $p$-complete spectra simply by understanding the $E(1)$-localisation of the $p$-complete sphere spectrum $\mathbb{S}_p$. This is the contents of the rest of the article.
-\begin{corollary}\label{Cor:E(1)local}
-  If $X$ is a $p$-complete spectrum, then the $E(1)$-localisation of $X$ is given by
-  \[
-    L_{E(1)} X \simeq X \otimes E(1)^{h\Z_p^*}.
-  \]
-\end{corollary}
 
 \subsection{$E(1)$-localisation of the $p$-complete sphere spectrum}
 
-We understand a spectrum, by understanding its homotopy groups. The calculations we will do in this section with show the following theorem
+We understand a spectrum, by understanding its homotopy groups. The calculations we will do in this section will show the following theorem
 \begin{theorem}
  If $p$ is an odd prime \todo{p=2} then
  \[
@@ -347,12 +330,12 @@ where $ 0 \le a_n \le p-1$ for all $n$.
 An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$, i.e. $a_0 \neq 0$.
 
 \begin{remark}
-  The homotopy groups of $E(1)$ are concentrated in the even degrees, and in fact $\pi_{2n}E(1) \simeq \Z_p(n)$, where the latter $n$ is for keepeing track on which homotopy group of $E(1)$ we're working with. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
+  The homotopy groups of $E(1)$ are $\Z_p$ in the even degrees and zero otherwise, and we write $\pi_{2n}E(1) \simeq \Z_p(n)$. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
 \end{remark}
 
 \subsubsection{$p$ odd}
 
-When $p$ is an odd prime, we first show that $\Z_p^*$ is topologically cyclic, which will be important in our calculations.
+We first treat the case where $p$ is and odd prime. $p$ is an odd prime, we first show that $\Z_p^*$ is topologically cyclic, which will be important in our calculations.
 
 \begin{lemma}
   If $p$ is an odd prime, then the units of the $p$-adic integers $\Z_p^*$ is topologically cyclic.
@@ -382,7 +365,7 @@ In the remaining parts of this section, we will fix a topological generator $g \
      0, & \text{otherwise.}
      \end{cases}
    \]
-   where \todo{negative n also?} $g^n \colon \Z_p(n) \to \Z_p(n)$ is multiplication with $g^n$.
+   where $g^n \colon \Z_p(n) \to \Z_p(n)$ is multiplication with $g^n$.
 \end{proposition}
 \begin{proof}
 There are different ways to show this proposition. We will use the \textit{homotopy fixed points spectral sequence}, which states that for a spectrum $X$ with a $G$-action for a group $G$, there is a spectral sequence with
@@ -436,13 +419,13 @@ What remains in our calculations is to identify the cokernel of $g^n-\id$ when $
   when $p-1$ divides $n$ and zero otherwise.
 \end{lemma}
 \begin{proof}
-We have a short exact sequence \todo{why}
+We have a short exact sequence
 \[
 \begin{tikzcd}
 0 \rar & \Z_p \rar{g^n - \operatorname{id}} & \Z_p \rar{} & \Z_p/{p^{v_p(g^n-1)}\Z_p} \rar & 0
 \end{tikzcd}
 \]
-and so we study $\Z_p/{p^{v_p(g^n-1)}\Z_p}$, and more specifically $v_p(g^n-1)$. As we saw earlier, there is a short exact sequence
+and so we study $\Z_p/{p^{v_p(g^n-1)}\Z_p}$, and in particular $v_p(g^n-1)$. As we saw earlier, there is a short exact sequence
 \[
 \begin{tikzcd}
 1 \rar & (1+p\Z_p)^* \rar{} & \Z_p^* \rar{} & \F_p^* \rar & 1
@@ -450,11 +433,10 @@ and so we study $\Z_p/{p^{v_p(g^n-1)}\Z_p}$, and more specifically $v_p(g^n-1)$.
 \]
 Now since $g$ is a $p$-adic unit, $p$ does not divide $g$ and so $g^n \equiv 1$ mod $p$ if, and only if, $p-1$ divides $n$. We split the proof in two cases.
 
-First, consider the case where $p-1$ does not divide $n$. Then $g^n -1 \not\equiv 0$ mod $p$, which means that $g^n -1$ is a unit mod $p$, so that $v_p(g^n - 1) = 0$. Hence
+First, consider the case where $p-1$ does not divide $n$. Then $g^n -1 \not\equiv 0$ mod $p$, which means that $g^n -1$ is a unit, so that $v_p(g^n - 1) = 0$. Hence
 \[
 \coker ( g^n - \id ) = 0.
 \]
-
 Now consider the case where $p-1$ divides $n$. This means that $g^n \equiv 1$ mod $p$, and so $g^n$ is in the kernel of the mod $p$ map, i.e. $g^n \in (1 + p\Z_p)^*$. We can then write $g^n = (g^{p-1})^{n/(p-1)}$ and since $g$ is a topological generator, so is $g^{p-1} \in (1 + p\Z_p)^*$. Since $p$ is odd, we have isomorphisms
 \[
 \begin{tikzcd}
@@ -462,7 +444,10 @@ Now consider the case where $p-1$ divides $n$. This means that $g^n \equiv 1$ mo
   p\Z_p \arrow[u, "\exp"', shift right = 1.3ex]{exp}
 \end{tikzcd}
 \]
-Hence the topological generator $g^{p-1}$ is sent to a topological generator of $p\Z_p$. Such a generator is of the form $pu$ where $u$ is a $p$-adic unit. But if $g^{p-1} \mapsto pu$ then $g^n \mapsto \frac{n}{p-1}pu$ under $\log$, and $$v_p\left(\frac{n}{p-1}pu\right) = v_p(n)+1.$$ We conclude that
+Hence the topological generator $g^{p-1}$ is sent to a topological generator of $p\Z_p$. Such a generator is of the form $pu$ where $u$ is a $p$-adic unit. Now write $\frac{n}{p-1} = tp^{v_p(n)}$ \todo{check} where $t$ is a $p$-adic unit. Then $\log(g^n) = \log(g^{p^{v_p(n)}(p-1)t}) = utp^{v_p(n)+1}$ and since $u$ and $t$ both are $p$-adic units, so is $ut$ and hence $\log(g^n)$ generates the subgroup $p^{v_p(n)+1}\Z_p$.
+Thus $g^n$ generates $(1 + p^{v_p(n)+1}\Z_p)^*$ and so \todo{??} $g^{n}-1$ generates $(p^{v_p(n)+1}\Z_p)^*$ and we can write $g^n-1 =u' p^{v_p(n)+1}$ for a $p$-adic unit $u'$ so that
+\iffalse
+But if $g^{p-1} \mapsto pu$ then $g^n \mapsto \frac{n}{p-1}pu$ under $\log$, and $$v_p\left(\frac{n}{p-1}pu\right) = v_p(n)+1.$$ We conclude that \fi
 \[
 v_p(g^n - 1 ) = v_p(n) + 1
 \]
@@ -470,7 +455,7 @@ which finishes the proof.
 \end{proof}
 Combining these two results finishes our calculations when $p$ is odd.
 
-\subsubsection{$p$ even}
+\subsubsection{$p=2$}
 
 When $p=2$, then we cannot use the same argument to say that $\Z_2^*$ is topologically cyclic. Instead, notice that $\Z_2^* \cong (1 + 2\Z_2)^*$ and consider the short exact sequence
 \[
@@ -478,10 +463,84 @@ When $p=2$, then we cannot use the same argument to say that $\Z_2^*$ is topolog
   1 \arrow{r} & (1 + 4\Z_2)^* \arrow{r} & (1+2\Z_2)^* \arrow{r} & \{\pm 1\} \rar & 1
 \end{tikzcd}
 \]
-where the last non-trivial map is mod $2$. This splits since we can lift $-1$ to $1 + (-1)2$, and since $(1 + 4\Z_2)^* \cong 4\Z_2$ we obtain that
+where the last non-trivial map is mod $4$. This splits since we can lift $-1$ to $1 + (-1)2$, and we obtain that
 \[
-\Z_2^* \cong 4\Z_2 \times \{\pm 1\}.
+\Z_2^* \cong (1 + 4\Z_2)^* \times \{\pm 1\}.
 \]
+We can now use the homotopy fixed spectral sequence as we did for the case where $p$ is odd. It follows from a general fact about group actions that
+\[
+E(1)^{h\Z_2^*} \cong \left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}
+\]
+so we start by calculating $E(1)^{h\{\pm 1\}}$ using the spectral sequence.
+
+\begin{proposition}
+  The non-trivial homotopy groups of the homotopy fixed points of $\{\pm 1\}$ on $E(1)$ are given by
+  \[
+    \pi_iE(1)^{h\{\pm 1\}} \cong
+    \begin{cases}
+      \Z_2 (i /2), & i \equiv 0 \text{ mod } 8 \\
+      \Z/2 (\frac{i+1}{2}), & i \equiv 1 \text{ mod } 8 \\
+      \Z/2 (\frac{i+2}{2}), & i \equiv 2 \text{ mod } 8 \\
+      2 \Z_2 (i/2), & i \equiv 4 \text{ mod } 8
+    \end{cases}
+  \]
+\end{proposition}
+\begin{proof}
+As mentioned we consider the homotopy fixed point spectral sequence, gives us a spectral sequence such that
+\[
+E^2_{i,j} = H^{-i}(B\{\pm 1\}), \pi_j E(1)) \implies \pi_{i+j}E(1)^{h \{\pm 1\}}.
+\]
+We calculate the group cohomology $H^{i}(B\{\pm 1\}), \pi_j E(1))$ when $j$ is even, otherwise it is trivial. The group cohomology is calcaulated as the cohomology of the complexes
+\begin{equation}\label{equation:groupcohomcomplex}
+  \begin{tikzcd}
+    \cdots & \Z_2(n) \lar[swap]{\psi_{-1} + 1} & \Z_2(n) \lar[swap]{\psi_{-1} - 1}  & \Z_2 (n) \lar[swap]{\psi_{-1} + 1}  & \Z_2 (n) \lar[swap]{\psi_{-1} - 1}
+  \end{tikzcd}
+\end{equation}
+If $n = j/2$ is an even integer then $\psi_{-1} = (-1)^{n} = 1$, so the complex (\ref{equation:groupcohomcomplex}) actually looks like
+\[
+\begin{tikzcd}
+  \cdots & \Z_2(n) \lar[swap]{2} & \Z_2(n) \lar[swap]{0}  & \Z_2 (n) \lar[swap]{2}  & \Z_2 (n) \lar[swap]{0}
+\end{tikzcd}
+\]
+When $n$ is odd $\psi_{-1} = (-1)^n = -1$, so the complex (\ref{equation:groupcohomcomplex}) is
+\[
+\begin{tikzcd}
+  \cdots & \Z_2(n) \lar[swap]{0} & \Z_2(n) \lar[swap]{-2}  & \Z_2 (n) \lar[swap]{0}  & \Z_2 (n) \lar[swap]{-2}
+\end{tikzcd}
+\]
+Since the two maps
+\[
+\begin{tikzcd}
+  \Z_2(n)  \arrow[r, "2", shift left]  \arrow[r, "-2", shift right, swap] & \Z_2(n)
+\end{tikzcd}
+\]
+are injections, the kernel is trivial and their cokernel is $\Z/2$. Using this to calculate the cohomology of our two chain complexes one obtains the following $E^2$-page of the spectral sequence.
+\begin{center}
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,
+    nodes in empty cells,nodes={minimum width=5ex,
+    minimum height=5ex,outer sep=0pt},
+    column sep=1ex,row sep=1ex]{
+    1 & 1  &      &     &     & \\
+    1  &    1     &  \Z &  0  & \Z & \\
+    1  &     0     &  \Z  & \Z &  0  & \\
+    1  & 1  &   0  &  1  &  & \\};
+\draw[thick] (m-1-5.west) -- (m-4-5.west) ;
+\draw[thick] (m-4-1.north) -- (m-4-4.north) ;
+\end{tikzpicture}
+\end{center}
+Notice that there are no non-trivial differentials on page two and so $E^2 = E^3$ but on the $E^3$ page there are possible non-trivial differentials. Let $u \in H^0(B\{\pm 1\}, \pi_4E(1)) \cong \Z_2(2)$ and $t \in H^1(B\{\pm 1\}, \pi_2E(1)) \cong \Z/2$ denote generators. Notice that $2t=0$
+and since we have non-trivial homotopy groups of $E(1)$
+in the even negative degrees, $u$ is invertible, and so
+$H^*(B\{\pm 1\}, \Z_2)$ is the algebra $\Z_2[t, u^{\pm}]/(2t)$.
+
+We now look at the differentials on the $E^3$-page, and as it turns out, most of them disappear. First notice that $E(1)$ is an $E_\infty$-ring spectrum, and so there is a map $\Sph \to E(1)$ since $\Sph$ is initial among $E_\infty$-ring spectra. It is a non-trivial fact that on homotopy groups this maps sends the Hopf map $\eta$ to our generator $t$ \todo{??}, and since we know that $\eta^4 \in \pi_4(\Sph) = 0$ we must have that $\eta^4 = 0$ and so $t^4 = 0$. Hence the differential on $E^3$ satisfy that $0 = d^3 t^4$
+which then forces $d^3t = 0$ by the multiplicative structure on the differentials. Using this we see that $0 = t^4 = d^3(tu)=td^3(u)$, and since $t$ is not a zero divisor \todo{why}, this implies that $d^3(u) = t^3$. The multiplicative structure of the differentials then tells us how all the differentials on the $E^3$-page looks, and there are no non-trivial differentials on $E^k$ for $k \ge 4$ so $E^4 = E^\infty$ \todo{check this}, and we can calculate the desired homotopy group from the differentials on the page $E^3$. We notice that the kernel of the map
+\[
+d^3 \colon \Z_2(2)[u] \to \Z/2(3)[t^3]
+\]
+is generated by $2u$ since $d^3(2u)=2t^3 = 0$, and $\Z_2(2)[u]$ sits in total degree $4$, and the other groups in total degree $4$ vanishes, hence we get the desired conclusion. \todo{elaborate a bit why everything vanishes}
+\end{proof}
 
 \begin{thebibliography}{9}
 

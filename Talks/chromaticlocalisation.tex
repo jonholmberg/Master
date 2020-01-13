@@ -311,9 +311,24 @@ Combining Theorem \ref{Adams-Baird, Ravenel} and \ref{Mahowald, Miller} lets us 
 
 \subsection{$E(1)$-localisation of the $p$-complete sphere spectrum}
 
-We understand a spectrum, by understanding its homotopy groups. The calculations we will do in this section will show the following theorem
+We understand a spectrum, by understanding its homotopy groups. In this section we will calculate the homotopy groups of $E(1)^{h\Z_p^*}$. We split the proof in two cases: where $p$ is odd and where $p=2$. Both proofs use the \textit{homotopy fixed points} spectral sequence, but require different approaches. In the course of our proofs, we outline some intermediate results in an effort of making these somewhat lengthy calculations easier to follow.
+
+We do a quick recollection of some needed propertis of the $p$-adic integers. Recall that $\Z_p$ is defined as the inverse limit $\Z_p := \varprojlim_m \Z/p^m$ in the category of rings. Concretely, we can write a $p$-adic integer $x$ on the form
+\[
+  x=\sum_{n = 0}^\infty a_n p^n
+\]
+where $ 0 \le a_n \le p-1$ for all $n$.
+An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$, i.e. $a_0 \neq 0$.
+
+\begin{remark}
+  The homotopy groups of $E(1)$ are $\Z_p$ in the even degrees and zero otherwise, and we write $\pi_{2n}E(1) \simeq \Z_p(n)$ where $n$ is the called the \textit{weight}. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
+\end{remark}
+
+\subsubsection{$p$ odd}
+
+We first treat the case where $p$ is and odd prime, which results in the following theorem
 \begin{theorem}
- If $p$ is an odd prime \todo{move?} then
+ If $p$ is an odd prime then
  \[
   \pi_n E(1)^{h\Z_p^*} \simeq
     \begin{cases}
@@ -324,22 +339,7 @@ We understand a spectrum, by understanding its homotopy groups. The calculations
   \]
   where $v_p$ is $p$-adic valuation.
 \end{theorem}
-
-We do a quick recollection of some needed propertis of the $p$-adic integers. Recall that $\Z_p$ is defined as the inverse limit $\Z_p := \varprojlim_m \Z/p^m$ in the category of rings. Concretely, we can write a $p$-adic integer $x$ on the form
-\[
-  x=\sum_{n = 0}^\infty a_n p^n
-\]
-where $ 0 \le a_n \le p-1$ for all $n$.
-An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$, i.e. $a_0 \neq 0$.
-
-\begin{remark}
-  The homotopy groups of $E(1)$ are $\Z_p$ in the even degrees and zero otherwise, and we write $\pi_{2n}E(1) \simeq \Z_p(n)$ where $n$ is the \textit{weight}. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
-\end{remark}
-
-\subsubsection{$p$ odd}
-
-We first treat the case where $p$ is and odd prime. $p$ is an odd prime, we first show that $\Z_p^*$ is topologically cyclic, which will be important in our calculations.
-
+The first intermediate result will be that $p$ is an odd primee $\Z_p^*$ is topologically cyclic, which will be important in our calculations.
 \begin{lemma}
   If $p$ is an odd prime, then the units of the $p$-adic integers $\Z_p^*$ is topologically cyclic.
 \end{lemma}
@@ -447,8 +447,8 @@ Now consider the case where $p-1$ divides $n$. This means that $g^n \equiv 1$ mo
   p\Z_p \arrow[u, "\exp"', shift right = 1.3ex]{exp}
 \end{tikzcd}
 \]
-Hence the topological generator $g^{p-1}$ is sent to a topological generator of $p\Z_p$. Such a generator is of the form $pu$ where $u$ is a $p$-adic unit. Now write $\frac{n}{p-1} = tp^{v_p(n)}$ \todo{check} where $t$ is a $p$-adic unit. Then $\log(g^n) = \log(g^{p^{v_p(n)}(p-1)t}) = utp^{v_p(n)+1}$ and since $u$ and $t$ both are $p$-adic units, so is $ut$ and hence $\log(g^n)$ generates the subgroup $p^{v_p(n)+1}\Z_p$.
-Thus $g^n$ generates $(1 + p^{v_p(n)+1}\Z_p)^*$ and so \todo{??} $g^{n}-1$ generates $(p^{v_p(n)+1}\Z_p)^*$ and we can write $g^n-1 =u' p^{v_p(n)+1}$ for a $p$-adic unit $u'$ so that
+Hence the topological generator $g^{p-1}$ is sent to a topological generator of $p\Z_p$. Such a generator is of the form $pu$ where $u$ is a $p$-adic unit. Now $v_p(n) = v_p(\frac{n}{p-1})$ so we can write $\frac{n}{p-1} = tp^{v_p(n)}$ where $t$ is a $p$-adic unit. Then $\log(g^n) = \log(g^{p^{v_p(n)}(p-1)t}) = utp^{v_p(n)+1}$ and since $u$ and $t$ both are $p$-adic units, so is $ut$, hence $\log(g^n)$ generates the subgroup $p^{v_p(n)+1}\Z_p$.
+Thus $g^n$ generates $(1 + p^{v_p(n)+1}\Z_p)^*$ and so $g^{n}-1$ generates the subgroup $p^{v_p(n)+1}\Z_p$ and we can write $g^n-1 =u' p^{v_p(n)+1}$ for a $p$-adic unit $u'$ so that
 \iffalse
 But if $g^{p-1} \mapsto pu$ then $g^n \mapsto \frac{n}{p-1}pu$ under $\log$, and $$v_p\left(\frac{n}{p-1}pu\right) = v_p(n)+1.$$ We conclude that \fi
 \[
@@ -572,19 +572,44 @@ $\cdots$  & -3 & -2 & -1 & 0 &
 \noindent Notice that $2t=0$
 and since we have non-trivial homotopy groups of $E(1)$
 in the even negative degrees, $u$ is invertible, and so
-$E^2$ is the algebra $\Z_2[t, u^{\pm}]/(2t)$.
+$E^2$ is the algebra $\Z_2[t, u^{\pm 1}]/(2t)$.
 
 We now look at the differentials on the $E^3$-page, and as it turns out, most of them disappear. First notice that $E(1)$ is an $E_\infty$-ring spectrum, and so there is a map $\Sph \to E(1)$ since $\Sph$ is initial among $E_\infty$-ring spectra. It is a non-trivial fact that on homotopy groups this maps sends the Hopf map $\eta \in \pi_1(\Sph)$ to our generator $t$, and since we know that $\eta^4 \in \pi_4(\Sph) = 0$ we must have that $\eta^4 = 0$ and so $t^4 = 0$. Hence the differential on $E^3$ satisfy that $0 = d^3 t^4$
 which then forces $d^3t = 0$ by the multiplicative structure on the differentials.
 
- Using this we see that $0 = t^4 = d^3(tu)=td^3(u)$, and since $t$ is not a zero divisor \todo{why}, this implies that $d^3(u) = t^3$.
+ We now claim that $d^3(u) = t^3$. To see this consider the following short exact sequence of bigraded abelian groups
+ \[
+\begin{tikzcd}
+  0 \rar & 2\Z_2[u^{\pm 1}] \rar & \Z_2[t, u^{\pm 1}]/(2t) \rar & \F_2[t, u^{\pm 1}] \rar & 0.
+\end{tikzcd}
+ \]
+ For degree reasons $d^3 \colon \Z_2[t, u^{\pm 1}]/(2t) \to \Z_2[t, u^{\pm 1}]/(2t)$ is zero on $2\Z_2[u^{\pm 1}]$, so it induces a map on the exact sequence above to itself. In particular this means that $d^3$ is determined by the induced map on $\F_2[t, u^{\pm 1}]$. In $\F_2[t, u^{\pm 1}]$ we have that $0 = t^4 = d^3(tu) = t d^3(u)$ and since
+ $t$ is not a zero-divisor in $\F_2[t, u^{\pm 1}]$,
+ the induced differential sends $u$ to $t^3$. This forces $d^3(u) = t^3$ as well, which proves our claim.
 
 
-The multiplicative structure of the differentials then tells us how all the differentials on the $E^3$-page looks, and there are no non-trivial differentials on $E^k$ for $k \ge 4$ so $E^4 = E^\infty$ \todo{check this}, and we can calculate the desired homotopy group from the differentials on the page $E^3$. We notice that the kernel of the map
+Since we now know the effect of $d^3$ on both $u$ and $t$ the multiplicative structure of the differentials then tells us how all the differentials on the $E^3$-page looks. \todo{finish} \iffalse
+\begin{table}[H]
+  \centering
+  \setlength{\tabcolsep}{12pt}
+  \setlength{\extrarowheight}{2pt}
+\begin{tabular}{ccccc|c}
+  $\ddots$      & $\vdots$ &   $\vdots$ &  $\vdots$  & $\vdots$  & $\vdots$ \\
+  $\cdots$      & 0 &   0 &  $\Z/2(3)$  & 0  & 6 \\
+  $\cdots$      & 0 &   0 &  $0$  & $0$  & 5 \\
+    $\cdots$     & 0  &   $\Z/2(2)$ &  0  & $\ker(d^3)$  & 4 \\
+    $\cdots$     &  0 &   0 &  0  &  0 & 3 \\
+    $\cdots$     & 0 &  0  &  $\Z/2(1)$  &  0 & 2 \\
+    $\cdots$     & 0 &  0  &  0  & 0  & 1 \\
+    $\cdots$     & 0 &  $\Z/2(0)$  & 0 &  $\Z_2(0)$  & 0 \\ \hline
+$\cdots$  & -3 & -2 & -1 & 0 &
+\end{tabular}
+\end{table}
+\noindent \fi In particular are no non-trivial differentials on $E^k$ for $k \ge 4$ so $E^4 = E^\infty$, and we can calculate the desired homotopy group from the differentials on the page $E^3$. We notice that the kernel of the surjective map
 \[
-d^3 \colon \Z_2(2)[u] \to \Z/2(3)[t^3]
+d^3 \colon \Z_2(2) \to \Z/2(3)
 \]
-is generated by $2u$ since $d^3(2u)=2t^3 = 0$, and $\Z_2(2)[u]$ sits in total degree $4$, and the other groups in total degree $4$ vanishes, hence we get the desired conclusion. \todo{elaborate a bit why everything vanishes}
+is generated by $2u$ since $d^3(2u)=2t^3 = 0$, and the domain $\Z_2(2)$ sits in total degree $4$. Using the multiplicative structure of the differentials, this is the case in any total degree $n$ where $n \equiv 4$ mod $8$, and we arrive at the homotopy groups we desire. \todo{elaborate a bit why everything vanishes}
 \end{proof}
 
 \begin{remark}

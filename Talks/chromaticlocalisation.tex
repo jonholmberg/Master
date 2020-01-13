@@ -153,7 +153,7 @@
 
 \rhead{Jon Lindegaard Holmberg}
 \lhead{TopTop 2019/2020}
-\chead{Talk ...}
+\chead{Recollement and Localisation}
 
 \begin{document}
 
@@ -294,20 +294,20 @@ is important in this case. Recall that this is a cartesian square, so we can rec
     L_{E(h-1)}X \arrow{r} & L_{E(h-1)}L_{K(h)}X
     \end{tikzcd}
 \end{center}
-since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$. Furthermore, such a cartesian square gives a long exact sequence of homotopy groups which can be quite useful. In (\cite{luriechromatichomotopytheorynotes}, Lecture 35) Lurie uses these facts to compute the $K(1)$ and $E(1)$-localisation of the sphere spectrum $\Sph$.
+since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$. Furthermore, such a cartesian square gives a long exact sequence of homotopy groups which can be quite useful. For example, in (\cite{luriechromatichomotopytheorynotes}, Lecture 35) Lurie uses these facts to compute the $K(1)$ and $E(1)$-localisation of the sphere spectrum $\Sph$.
 
 \section{Bousfield localisation of $p$-complete spectra}\label{Section:bousfieldlocal}
 
-As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \cite{bousfield1979localization} concerns the case of $E(1)$-localisations, also known as $KU_p$-localisation for a prime $p$. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra. Bousfield mentions two results in \cite{bousfield1979localization} which will be crucial to our calculations. These are the contents of following two theorems.
+As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \cite{bousfield1979localization} concerns the case of $E(1)$-localisations, also known as $KU_p$-localisation for a prime $p$, where $KU_p$ is the $p$-localisation of the complex K-theory spectrum. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra. Bousfield mentions two results in \cite{bousfield1979localization} which will be crucial to our calculations. These are the contents of following two theorems.
 \begin{theorem}[Adams-Baird, Ravenel]\label{Adams-Baird, Ravenel}
   $E(1)$-localisation is smashing, i.e. $L_{E(1)}X \simeq X \otimes L_{E(1)} \mathbb{S}_p$. Equivalently, this says that $X \to X \otimes L_{E(1)} \mathbb{S}_p$ is an $E(1)$-localisation
 \end{theorem}
-In particular, Theorem \ref{Adams-Baird, Ravenel} says that we get a recollement square (\ref{SppRecollement2}) for $h=1$. The units of the $p$-adic integers $\Z_p^*$ acts on $E(1)$ by taking a unit $g \in \Z_p^*$ to the Adam's operation $\psi_g$, and this action turns out to very important to our calculations.
+In particular, Theorem \ref{Adams-Baird, Ravenel} says that we get a recollement diagram (\ref{SppRecollement2}) for $h=1$. The units of the $p$-adic integers $\Z_p^*$ acts on $E(1)$ by taking a unit $g \in \Z_p^*$ to the Adam's operation $\psi_g$, and this action turns out to very important to our calculations.
 \begin{theorem}[Mahowald for $p=2$, Miller for $p$ odd]\label{Mahowald, Miller}
    The homotopy fix points of the action of $\Z_p^*$ on $E(1)$ satisfy that
      $$L_{E(1)}\mathbb{S}_p \simeq E(1)^{h\Z_p^*}.$$
 \end{theorem}
-Combining Theorem \ref{Adams-Baird, Ravenel} and \ref{Mahowald, Miller} lets us understand the $E(1)$-localisation of $p$-complete spectra simply by understanding the $E(1)$-localisation of the $p$-complete sphere spectrum $\mathbb{S}_p$. This is the contents of the rest of the article.
+Combining Theorem \ref{Adams-Baird, Ravenel} and \ref{Mahowald, Miller} lets us understand the $E(1)$-localisation of $p$-complete spectra by understanding the homotopy fixed points of the action of $\Z_p^*$ on the spectrum $E(1)$. This is the contents of the rest of the article.
 
 \subsection{$E(1)$-localisation of the $p$-complete sphere spectrum}
 
@@ -324,9 +324,9 @@ An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$,
   The homotopy groups of $E(1)$ are $\Z_p$ in the even degrees and zero otherwise, and we write $\pi_{2n}E(1) \simeq \Z_p(n)$ where $n$ is the called the \textit{weight}. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
 \end{remark}
 
-\subsubsection{$p$ odd}
+\subsubsection{The homotopy groups when $p$ is odd}
 
-We first treat the case where $p$ is and odd prime, which results in the following theorem
+We first treat the case where $p$ is an odd prime, which results in the following theorem.
 \begin{theorem}
  If $p$ is an odd prime then
  \[
@@ -339,7 +339,7 @@ We first treat the case where $p$ is and odd prime, which results in the followi
   \]
   where $v_p$ is $p$-adic valuation.
 \end{theorem}
-The first intermediate result will be that $p$ is an odd primee $\Z_p^*$ is topologically cyclic, which will be important in our calculations.
+The first intermediate result will be that $p$ is an odd prime $\Z_p^*$ is topologically cyclic, which will be important in our calculations.
 \begin{lemma}
   If $p$ is an odd prime, then the units of the $p$-adic integers $\Z_p^*$ is topologically cyclic.
 \end{lemma}
@@ -434,7 +434,7 @@ and so we study $\Z_p/{p^{v_p(g^n-1)}\Z}$, and in particular $v_p(g^n-1)$. As we
 1 \rar & (1+p\Z_p)^* \rar{} & \Z_p^* \rar{} & \F_p^* \rar & 1
 \end{tikzcd}
 \]
-Now since $g$ is a $p$-adic unit, $p$ does not divide $g$ and so $g^n \equiv 1$ mod $p$ if, and only if, $p-1$ divides $n$.\todo{use lemma 2.12?} We split the proof in two cases.
+Now since $g$ is a $p$-adic unit, $p$ does not divide $g$ and so $g^n \equiv 1$ mod $p$ if, and only if, $p-1$ divides $n$. We split the proof in two cases.
 
 First, consider the case where $p-1$ does not divide $n$. Then $g^n -1 \not\equiv 0$ mod $p$, which means that $g^n -1$ is a unit, so that $v_p(g^n - 1) = 0$. Hence
 \[
@@ -458,9 +458,9 @@ which finishes the proof.
 \end{proof}
 Combining these two results finishes our calculations when $p$ is odd.
 
-\subsubsection{$p=2$}
+\subsubsection{The homotopy groups when $p=2$}
 
-We show the following theorem
+In this section we show the following theorem
 
 \begin{theorem}\label{theorem:p=2final}
   The homotopy groups of $E(1)^{h\Z_2^*}$ are given by canonical equivalences
@@ -488,7 +488,7 @@ where the last non-trivial map is mod $4$. This splits since we can lift $-1$ to
 \[
 \Z_2^* \cong (1 + 4\Z_2)^* \times \{\pm 1\}.
 \]
-We can now use the homotopy fixed spectral sequence as we did for the case where $p$ is odd. It follows from a general fact about group actions that
+We can now use the homotopy fixed spectral sequence as we did for the case where $p$ is odd. It follows from a general fact about the homotopy fixed points of group actions that
 \[
 E(1)^{h\Z_2^*} \cong \left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}
 \]
@@ -574,7 +574,7 @@ and since we have non-trivial homotopy groups of $E(1)$
 in the even negative degrees, $u$ is invertible, and so
 $E^2$ is the algebra $\Z_2[t, u^{\pm 1}]/(2t)$.
 
-We now look at the differentials on the $E^3$-page, and as it turns out, most of them disappear. First notice that $E(1)$ is an $E_\infty$-ring spectrum, and so there is a map $\Sph \to E(1)$ since $\Sph$ is initial among $E_\infty$-ring spectra. It is a non-trivial fact that on homotopy groups this maps sends the Hopf map $\eta \in \pi_1(\Sph)$ to our generator $t$, and since we know that $\eta^4 \in \pi_4(\Sph) = 0$ we must have that $\eta^4 = 0$ and so $t^4 = 0$. Hence the differential on $E^3$ satisfy that $0 = d^3 t^4$
+We now look at the differentials on the $E^3$-page, and as it turns out, most of them disappear. First notice that $E(1)$ is an $E_\infty$-ring spectrum, and so there is a unique map $\Sph \to E(1)$ since $\Sph$ is initial among $E_\infty$-ring spectra. It is a non-trivial fact that on homotopy groups this maps sends the Hopf map $\eta \in \pi_1(\Sph)$ to our generator $t$, and since we know that $\eta^4 \in \pi_4(\Sph) = 0$ we must have that $\eta^4 = 0$ and so $t^4 = 0$. Hence the differential on $E^3$ satisfy that $0 = d^3 t^4$
 which then forces $d^3t = 0$ by the multiplicative structure on the differentials.
 
  We now claim that $d^3(u) = t^3$. To see this consider the following short exact sequence of bigraded abelian groups
@@ -585,31 +585,14 @@ which then forces $d^3t = 0$ by the multiplicative structure on the differential
  \]
  For degree reasons $d^3 \colon \Z_2[t, u^{\pm 1}]/(2t) \to \Z_2[t, u^{\pm 1}]/(2t)$ is zero on $2\Z_2[u^{\pm 1}]$, so it induces a map on the exact sequence above to itself. In particular this means that $d^3$ is determined by the induced map on $\F_2[t, u^{\pm 1}]$. In $\F_2[t, u^{\pm 1}]$ we have that $0 = t^4 = d^3(tu) = t d^3(u)$ and since
  $t$ is not a zero-divisor in $\F_2[t, u^{\pm 1}]$,
- the induced differential sends $u$ to $t^3$. This forces $d^3(u) = t^3$ as well, which proves our claim.
+ the induced differential sends $u$ to $t^3$. This forces $d^3(u) = t^3$ in $\Z_2[t, u^{\pm 1}]/(2t)$ as well, which proves our claim.
 
 
-Since we now know the effect of $d^3$ on both $u$ and $t$ the multiplicative structure of the differentials then tells us how all the differentials on the $E^3$-page looks. \todo{finish} \iffalse
-\begin{table}[H]
-  \centering
-  \setlength{\tabcolsep}{12pt}
-  \setlength{\extrarowheight}{2pt}
-\begin{tabular}{ccccc|c}
-  $\ddots$      & $\vdots$ &   $\vdots$ &  $\vdots$  & $\vdots$  & $\vdots$ \\
-  $\cdots$      & 0 &   0 &  $\Z/2(3)$  & 0  & 6 \\
-  $\cdots$      & 0 &   0 &  $0$  & $0$  & 5 \\
-    $\cdots$     & 0  &   $\Z/2(2)$ &  0  & $\ker(d^3)$  & 4 \\
-    $\cdots$     &  0 &   0 &  0  &  0 & 3 \\
-    $\cdots$     & 0 &  0  &  $\Z/2(1)$  &  0 & 2 \\
-    $\cdots$     & 0 &  0  &  0  & 0  & 1 \\
-    $\cdots$     & 0 &  $\Z/2(0)$  & 0 &  $\Z_2(0)$  & 0 \\ \hline
-$\cdots$  & -3 & -2 & -1 & 0 &
-\end{tabular}
-\end{table}
-\noindent \fi In particular are no non-trivial differentials on $E^k$ for $k \ge 4$ so $E^4 = E^\infty$, and we can calculate the desired homotopy group from the differentials on the page $E^3$. We notice that the kernel of the surjective map
+Since we now know the effect of $d^3$ on both $u$ and $t$ the multiplicative structure of the differentials then tells us how all the differentials on the $E^3$-page looks, and it turns out that most of the entries vanishes, leaving only a single non-trivial entry entry in the total degrees $n$, where $n$ mod $8$ is $0, 1, 2 ,3$ or $4$, and only one differential $d^3$ from total degree $n$ where $n \equiv 4$ mod $8$. In total degree $4$ this is the map
 \[
-d^3 \colon \Z_2(2) \to \Z/2(3)
+d^3 \colon \Z_2(2) \to \Z/2(3).
 \]
-is generated by $2u$ since $d^3(2u)=2t^3 = 0$, and the domain $\Z_2(2)$ sits in total degree $4$. Using the multiplicative structure of the differentials, this is the case in any total degree $n$ where $n \equiv 4$ mod $8$, and we arrive at the homotopy groups we desire. \todo{elaborate a bit why everything vanishes}
+This map is surjective, and the kernel is generated by $2u$ since $d^3(2u)=2t^3 = 0$, and the domain $\Z_2(2)$ sits in total degree $4$. Using the structure of the differentials, this is the case in any total degree $n$ where $n \equiv 4$ mod $8$, and we arrive at the homotopy groups we desire.
 \end{proof}
 
 \begin{remark}
@@ -629,7 +612,7 @@ This is a direct consequence of case ii) in (\cite{adams}, Lemma 2.12)
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{theorem:p=2final}]
-  What remains to be calculated is thus $\left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}$. Again we use the homotopy fixed point spectral sequence, which in this case yields
+  What remains to be calculated is thus the homotopy fixed points of the action of $(1 + 4\Z_2)^*$ on $E(1)^{h\{\pm 1\}}$. Again we use the homotopy fixed point spectral sequence, which in this case yields
   \[
   E^2_{i,j} = H^{-i}(B(1+4 \Z_2)^*, \pi_jE(1)^{h\{\pm 1\}}) \implies \pi_{i+j}\left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}
   \]
@@ -658,16 +641,16 @@ This is a direct consequence of case ii) in (\cite{adams}, Lemma 2.12)
     \item $\Z/2(\frac{i+2}{2}) \toWithMapLong{1-5^{(i+2)/2}} \Z/2(\frac{i+2}{2})$ when $i \equiv 2$ mod $8$
     \item $2\Z_2(i/2) \toWithMapLong{1-5^{i/2}} 2\Z_2(i/2)$ when $i \equiv 4$ mod $8$
   \end{enumerate}
-  We do this each case at a time.
+  We do this for each case.
   \begin{enumerate}[i)]
-    \item When $i=0$, $1-5^0 = 0$ so it has kernel and cokernel $\Z_2(0)$. When $i \equiv 0$ mod $8$ and $i \neq 0$, $1-5^{1/2}$ the map is injective and the cokernel is given by $\Z/2^{v_2(1-5^{i/2})}\Z$. By Lemma \ref{lemma:2adicval} we have that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 1 + v_2(i)$,
+    \item When $i=0$, $1-5^0 = 0$ so the map has kernel and cokernel $\Z_2(0)$. When $i \equiv 0$ mod $8$ and $i \neq 0$, the map $1-5^{1/2}$ is injective and the cokernel is given by $\Z/2^{v_2(1-5^{i/2})}\Z$. By Lemma \ref{lemma:2adicval} we have that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 1 + v_2(i)$,
     which shows that the cokernel is $\Z/2^{v_2(i)+1}\Z$.
     \item In this case $1-5^{(i+1)/2}$ will be even, so it will actually be the zero map.
-    \item The same is true here. It will be the zero map.
-    \item This case requires a bit of work. We have seen that the cokernel of $1-t^{i/2}$ is $\Z/2^{v_2(1-t^{i/2})}\Z$, and so we calculate $v_2({1-t^{i/2}})$ when $i \equiv 4$ mod $8$. $i \equiv 4$ mod $8$ implies that $i/2 \equiv 2$ or $i/2 \equiv 6$ mod $8$ so that $v_2(i/2) = 1$
-    and from Lemma \ref{lemma:2adicval} we get that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 3$. Thus $1-t^{i/2}$ is an injective map with cokernel $\Z/2^3 \cong \Z/8$
+    \item This case is similar to case ii). The map will be the zero map.
+    \item This case requires a bit of work. We have seen that the cokernel of $1-t^{i/2}$ is $\Z/2^{v_2(1-t^{i/2})}\Z$, and so we calculate $v_2({1-t^{i/2}})$ when $i \equiv 4$ mod $8$. $i \equiv 4$ mod $8$ implies that $i/2 \equiv 2$ or $i/2 \equiv 6$ mod $8$ so that $v_2(i/2) = 1$ since $i/4$ is odd
+    and from Lemma \ref{lemma:2adicval} we get that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 3$. Thus $1-t^{i/2}$ is an injective map with cokernel $\Z/2^3 = \Z/8$
   \end{enumerate}
-  From this we see that the $E^2$-page is $8$-periodic and will look like the following
+  From this we see that the $E^2$-page is $8$-periodic in $j$ and will look like the following
   \begin{table}[H]
     \centering
     \setlength{\tabcolsep}{12pt}

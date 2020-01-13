@@ -15,6 +15,7 @@
 \usepackage{xfrac}                % Nice in-line fraction.
 \usepackage{enumerate}            % Easy enumerate
 \usepackage{todonotes}
+\usepackage{array}
 \usepackage{subfiles}
 
 \usepackage{spectralsequences}
@@ -310,12 +311,12 @@ Combining Theorem \ref{Adams-Baird, Ravenel} and \ref{Mahowald, Miller} lets us 
 
 We understand a spectrum, by understanding its homotopy groups. The calculations we will do in this section will show the following theorem
 \begin{theorem}
- If $p$ is an odd prime \todo{p=2} then
+ If $p$ is an odd prime \todo{move?} then
  \[
   \pi_n E(1)^{h\Z_p^*} \simeq
     \begin{cases}
     \Z_p, & n=0,-1 \\
-    \Z/p^{v_p(n)+1}\Z_p, & p-1 \text{ divides } n \\
+    \Z/p^{v_p(n)+1}\Z, & p-1 \text{ divides } n \\
     0, & \text{otherwise}
     \end{cases}
   \]
@@ -414,7 +415,7 @@ What remains in our calculations is to identify the cokernel of $g^n-\id$ when $
 \begin{lemma}
   If $n$ is a positive integer then
   \[
-    \coker(g^n - \id) \cong \Z/p^{v_p(n)+1}\Z_p
+    \coker(g^n - \id) \cong \Z/p^{v_p(n)+1}\Z
   \]
   when $p-1$ divides $n$ and zero otherwise.
 \end{lemma}
@@ -422,16 +423,16 @@ What remains in our calculations is to identify the cokernel of $g^n-\id$ when $
 We have a short exact sequence
 \[
 \begin{tikzcd}
-0 \rar & \Z_p \rar{g^n - \operatorname{id}} & \Z_p \rar{} & \Z_p/{p^{v_p(g^n-1)}\Z_p} \rar & 0
+0 \rar & \Z_p \rar{g^n - \operatorname{id}} & \Z_p \rar{} & \Z_p/{p^{v_p(g^n-1)}\Z} \rar & 0
 \end{tikzcd}
 \]
-and so we study $\Z_p/{p^{v_p(g^n-1)}\Z_p}$, and in particular $v_p(g^n-1)$. As we saw earlier, there is a short exact sequence
+and so we study $\Z_p/{p^{v_p(g^n-1)}\Z}$, and in particular $v_p(g^n-1)$. As we saw earlier, there is a short exact sequence
 \[
 \begin{tikzcd}
 1 \rar & (1+p\Z_p)^* \rar{} & \Z_p^* \rar{} & \F_p^* \rar & 1
 \end{tikzcd}
 \]
-Now since $g$ is a $p$-adic unit, $p$ does not divide $g$ and so $g^n \equiv 1$ mod $p$ if, and only if, $p-1$ divides $n$. We split the proof in two cases.
+Now since $g$ is a $p$-adic unit, $p$ does not divide $g$ and so $g^n \equiv 1$ mod $p$ if, and only if, $p-1$ divides $n$.\todo{use lemma 2.12?} We split the proof in two cases.
 
 First, consider the case where $p-1$ does not divide $n$. Then $g^n -1 \not\equiv 0$ mod $p$, which means that $g^n -1$ is a unit, so that $v_p(g^n - 1) = 0$. Hence
 \[
@@ -457,6 +458,24 @@ Combining these two results finishes our calculations when $p$ is odd.
 
 \subsubsection{$p=2$}
 
+We show the following theorem
+
+\begin{theorem}
+  The homotopy groups of $E(1)^{h\Z_2^*}$ are given by \todo{check+weights}
+  \[
+  \pi_nE(1)^{h\Z_2^*} \simeq
+    \begin{cases}
+      \Z_2, & n = -1 \\
+      \Z/2 \times \Z_2, & n = 0 \\
+      \Z / 2, & n \equiv 0 \text{ mod } 8 \text{ and } n \neq 0 \\
+      \Z / 2 \times \Z / 2, & n \equiv 1 \text{ mod } 8 \\
+      \Z / 2, & n \equiv 2 \text{ mod } 8 \\
+      \Z / 8, & n \equiv 3 \text{ mod } 8 \\
+      \Z / 2^{v_2(n) + 1}, & n \equiv 7 \text{ mod } 8 \text{ and } n \neq -1 \\
+      0, & \text{otherwise.}
+    \end{cases}
+  \]
+\end{theorem}
 When $p=2$, then we cannot use the same argument to say that $\Z_2^*$ is topologically cyclic. Instead, notice that $\Z_2^* \cong (1 + 2\Z_2)^*$ and consider the short exact sequence
 \[
 \begin{tikzcd}
@@ -473,7 +492,7 @@ E(1)^{h\Z_2^*} \cong \left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}
 \]
 so we start by calculating $E(1)^{h\{\pm 1\}}$ using the spectral sequence.
 
-\begin{proposition}
+\begin{proposition}\label{proposition:homotopypm1}
   The non-trivial homotopy groups of the homotopy fixed points of $\{\pm 1\}$ on $E(1)$ are given by
   \[
     \pi_iE(1)^{h\{\pm 1\}} \cong
@@ -515,20 +534,21 @@ Since the two maps
 \end{tikzcd}
 \]
 are injections, the kernel is trivial and their cokernel is $\Z/2$. Using this to calculate the cohomology of our two chain complexes one obtains the following $E^2$-page of the spectral sequence.
-\begin{center}
-  \begin{tikzpicture}
-  \matrix (m) [matrix of math nodes,
-    nodes in empty cells,nodes={minimum width=5ex,
-    minimum height=5ex,outer sep=0pt},
-    column sep=1ex,row sep=1ex]{
-    1 & 1  &      &     &     & \\
-    1  &    1     &  \Z &  0  & \Z & \\
-    1  &     0     &  \Z  & \Z &  0  & \\
-    1  & 1  &   0  &  1  &  & \\};
-\draw[thick] (m-1-5.west) -- (m-4-5.west) ;
-\draw[thick] (m-4-1.north) -- (m-4-4.north) ;
-\end{tikzpicture}
-\end{center}
+\begin{table}[h]
+  \centering
+  \setlength{\tabcolsep}{12pt}
+  \setlength{\extrarowheight}{2pt}
+\begin{tabular}{cccc|c}
+  $\ddots$        &   $\vdots$ &  $\vdots$  & $\vdots$  & $\vdots$ \\
+  $\cdots$        &   0 &  $0$  & $0$  & 5 \\
+    $\cdots$        &   0 &  $\Z/8$  & $0$  & 4 \\
+    $\cdots$        &   0 &  0  &  0 & 3 \\
+    $\cdots$        &  0  &  $\Z/2(2)$  &  $\Z/2(2)$ & 2 \\
+    $\cdots$       &  0  &  $\Z/2(1)$  & $\Z/2(1)$  & 1 \\
+    $\cdots$       &  0  & $\Z_2(0)$ &  $\Z_2(0)$  & 0 \\ \hline
+$\cdots$  & -2 & -1 & 0 &
+\end{tabular}
+\end{table}
 Notice that there are no non-trivial differentials on page two and so $E^2 = E^3$ but on the $E^3$ page there are possible non-trivial differentials. Let $u \in H^0(B\{\pm 1\}, \pi_4E(1)) \cong \Z_2(2)$ and $t \in H^1(B\{\pm 1\}, \pi_2E(1)) \cong \Z/2$ denote generators. Notice that $2t=0$
 and since we have non-trivial homotopy groups of $E(1)$
 in the even negative degrees, $u$ is invertible, and so
@@ -541,6 +561,90 @@ d^3 \colon \Z_2(2)[u] \to \Z/2(3)[t^3]
 \]
 is generated by $2u$ since $d^3(2u)=2t^3 = 0$, and $\Z_2(2)[u]$ sits in total degree $4$, and the other groups in total degree $4$ vanishes, hence we get the desired conclusion. \todo{elaborate a bit why everything vanishes}
 \end{proof}
+
+\begin{remark}
+  Some may recognize these homotopy groups as the homotopy groups of the real K-theory spectrum $KO$, and it is in fact true that
+  \[
+    E(1)^{h\{ \pm1\}} \simeq KO.
+  \]
+\end{remark}
+
+What remains to be calculated is thus $\left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}$. Again we use the homotopy fixed point spectral sequence, which in this case yields
+\[
+E^2_{i,j} = H^{-i}(B(1+4 \Z_2)^*, \pi_jE(1)^{h\{\pm 1\}}) \implies \pi_{i+j}\left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}
+\]
+Notice that the logarithm gives an equivalence $(1+4\Z_2)^*\toWithMapLong{\simeq} 4\Z_2$ and multiplication by $4$ gives an equivalence $\Z_2 \toWithMapLong{\simeq} 4\Z_2$, so it suffices to calculate the group cohomology of $\Z_2$ with coefficients in $\pi_jE(1)^{h\{\pm 1\}}$. Using that $5$ generates $(1+4\Z_2)^*$ calculations yields that
+$H^i(\Z_2, \pi_jE(1)^{h\{\pm 1\}})$ vanishes for $i \ge 2$, and for $i =0,1$ the cohomology group depends on the weight of the coefficients.
+\iffalse
+\begin{center}
+  \begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,
+    nodes in empty cells,nodes={minimum width=5ex,
+    minimum height=5ex,outer sep=0pt},
+    column sep=1ex,row sep=1ex]{
+      \cdots & &      &     &     & \\
+         \cdots &    &  \Z &  0  & \Z & \\
+         \cdots  &   &  \Z  & \Z &  \Z_2(0 )  & \\
+    \strut\cdots  &   -2  &  -1  & 0 & \strut \\};
+\draw[thick] (m-1-6.west) -- (m-4-6.west) ;
+\draw[thick] (m-4-1.north) -- (m-4-6.north) ;
+\end{tikzpicture}
+\end{center}
+\fi
+ Using Proposition \ref{proposition:homotopypm1} calculations of the group cohomology of $\Z_2$ then comes down to calculating the kernel and cokernel of the maps
+\begin{enumerate}[i)]
+  \item $\Z_2(i/2) \toWithMapLong{1-5^{i/2}} \Z_2(i/2)$ when $i \equiv 0$ mod $8$
+  \item $\Z/2(\frac{i+1}{2}) \toWithMapLong{1-5^{(i+1)/2}} \Z/2(\frac{i+1}{2})$ when $i \equiv 1$ mod $8$
+  \item $\Z/2(\frac{i+2}{2}) \toWithMapLong{1-5^{(i+2)/2}} \Z/2(\frac{i+2}{2})$ when $i \equiv 2$ mod $8$
+  \item $2\Z_2(i/2) \toWithMapLong{1-5^{i/2}} 2\Z_2(i/2)$ when $i \equiv 4$ mod $8$
+\end{enumerate}
+We do this each case at a time.
+\begin{enumerate}[i)]
+  \item When $i=0$, $1-5^0 = 0$ so it has kernel and cokernel $\Z_2(0)$. When $i \equiv 0$ mod $8$ and $i \neq 0$, $1-5^{1/2}$ the map is injective and the cokernel is given by $\Z/2^{v_2(1-5^{i/2})}\Z$. By Adams Lemma 2.12 \todo{ref} we have that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 1 + v_2(i)$,
+  which shows that the cokernel is $\Z/2^{v_2(i)+1}\Z$.
+  \item In this case $1-5^{(i+1)/2}$ will be even, so it will actually be the zero map.
+  \item The same is true here. It will be the zero map.
+  \item This case requires a bit of work. We have seen that the cokernel of $1-t^{i/2}$ is $\Z/2^{v_2(1-t^{i/2})}\Z$, and so we calculate $v_2({1-t^{i/2}})$ when $i \equiv 4$ mod $8$, i.e. $i/2 \equiv 2$ mod $8$ \todo{check}. From Adams \todo{ref} Lemma 2.12 we get that $v_2(1-t^{i/2}) = 2 + v_2(i/2)$, and clearly $v_2(i/2) = 1$
+  hence $v_2(1-t^{i/2}) = 3$. Thus $1-t^{i/2}$ is an injective map with cokernel $\Z/2^3 \cong \Z/8$
+\end{enumerate}
+From this we see that the $E^2$-page is $8$-periodic and will look like the following \todo{finish}
+\begin{table}[h]
+  \centering
+  \setlength{\tabcolsep}{12pt}
+  \setlength{\extrarowheight}{2pt}
+\begin{tabular}{cccc|c}
+  $\ddots$        &   $\vdots$ &  $\vdots$  & $\vdots$  & $\vdots$ \\
+  $\cdots$        &   0 &  $\Z/2(6)$  & $\Z/2(6)$  & 10 \\
+  $\cdots$        &   0 &  $\Z/2(5)$  & $\Z/2(5)$  & 9 \\
+  $\cdots$        &   0 &  $\Z/2^{v_2(8)+1}\Z(4)$  & $0$  & 8 \\
+  $\cdots$        &   0 &  $0$  & $0$  & 7 \\
+  $\cdots$        &   0 &  $0$  & $0$  & 6 \\
+  $\cdots$        &   0 &  $0$  & $0$  & 5 \\
+    $\cdots$        &   0 &  $\Z/8$  & $0$  & 4 \\
+    $\cdots$        &   0 &  0  &  0 & 3 \\
+    $\cdots$        &  0  &  $\Z/2(2)$  &  $\Z/2(2)$ & 2 \\
+    $\cdots$       &  0  &  $\Z/2(1)$  & $\Z/2(1)$  & 1 \\
+    $\cdots$       &  0  & $\Z_2(0)$ &  $\Z_2(0)$  & 0 \\ \hline
+$\cdots$  & -2 & -1 & 0 &
+\end{tabular}
+\end{table}
+
+There are no non-trivial differentials on page $E^k$ for $k \ge 2$, so this page is actually the $E^\infty$ page, and so most of the homotopy groups we can read directly from this page. There are a few cases where we get an extension problem. These are in total degree $0$ and $n$ when $n \equiv 1$ mod $8$. In the first case we have a short exact sequence
+\[
+\begin{tikzcd}
+  0 \rar & \Z/2(1) \rar & \pi_0E(1)^{h\Z_2^*} \rar & \Z_2(0) \rar & 0
+\end{tikzcd}
+\]
+which splits since $\Z_2(0)$ is a free, hence projective, $\Z_2$-module. Hence
+\[
+\pi_0E(1)^{h\Z_2^*} \cong \Z/2(1) \times \Z_2(0),
+\]
+but there are multible ways to construct this splitting, and in fact we can choose a canonical way. We have a unique map of $E_\infty$-ring spectra $\Sph \to E(1)$ as we have seen earlier, which induces a map on homotopy groups
+\[
+\pi_n \Spp_2 \to \pi_nE(1)^{h\Z_2^*}
+\]
+where $\Spp_2$ is the $2$-local sphere spectrum.
+\todo{add weights to all lemmas + write about weight in remark}
 
 \begin{thebibliography}{9}
 

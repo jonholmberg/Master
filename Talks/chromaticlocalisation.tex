@@ -169,59 +169,58 @@ to describe $E(1)$-localisation of $p$-complete spectra. As it turns out, we can
 \begin{notation}
   We let $\mathcal{D} (\Sph_p)$ denote the stable $\infty$-category of $p$-complete spectra. One could also write this as $\operatorname{Sp}_p$, but we will refrain from that.
 \end{notation}
-In section \ref{Subsection:recollementpcompletespectra} we will work in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$. This is a pointed $\infty$-category by the zero category, but it is \textit{not} stable itself. In this category we will work with \textit{Verdier sequences} which are defined below.
+In section \ref{Subsection:recollementpcompletespectra} we will work in the $\infty$-category of stable $\infty$-categories $\Cat^{\text{st}}_\infty$. This is a pointed $\infty$-category by a zero category, but it is \textit{not} stable itself. In this category we will work with \textit{Verdier sequences} which are defined below.
 
 \begin{definition}
-  A \textit{Verdier sequence} in the $\infty$-category of stable $\infty$-categories $\Cat_{\text{st}}^\infty$ is a bicartesian square
+  A \textit{Verdier sequence} in the $\infty$-category of stable $\infty$-categories $\Cat^{\text{st}}_\infty$ is a bicartesian square
   \[
     \begin{tikzcd}
       X \arrow{r}{} \arrow{d}{} & Y \arrow{d}{} \\
        0 \arrow{r}{} & Z
     \end{tikzcd}
   \]
-  in $\Cat_{\text{st}}^\infty$. Here $Z$ is called the \textit{Verdier quotient}, and can be written as $Y/X$.
+  in $\Cat^{\text{st}}_\infty$. Here $Z$ is called the \textit{Verdier quotient}, and can be written as $Y/X$.
 \end{definition}
 
 \section{Chromatic homotopy theory}\label{Section:chromhtpytheory}
 
-We start by a brief introduction to chromatic homotopy theory. Chromatic homotopy theory studies stable homotopy theory, and in particular complex oriented cohomology theories such as the complex cobordism theory spectrum $MU$. We study such spectra by means of what is called the \textit{chromatic filtration}. As we will see this chromatic filtration is induced by a height filtration of formal groups. In particular, the localisation $L_{E(n)}$ along the Morava $E$-theories $E(n)$ fits into a chromatic tower
+We start by a brief introduction to chromatic homotopy theory. Chromatic homotopy theory studies stable homotopy theory, and in particular complex oriented cohomology theories such as the complex cobordism theory spectrum $MU$. We study such spectra by means of what is called the \textit{chromatic filtration}. As we will see this chromatic filtration is induced by a height filtration of the moduli stack of formal groups. In particular, if we consider the Morava $E$-theories $E(n)$ for each natural number $n \in \N$ and a prime $p$ suppressed in the notation, the localisation $L_{E(n)}$ fits into a chromatic tower
 \[
 X \toWithMapLong{} \cdots \toWithMapLong{} L_{E(n)}X \toWithMapLong{} L_{E(n-1)}X \toWithMapLong{} \cdots \toWithMapLong{} L_{E(0)}X
 \]
-where $X$ is a spectrum. These piece can be obtained from localisation along Morava $K$-theories. We will see this in the case where $X$ is a $p$-complete spectrum. Moreover \textit{the chromatic convergence theorem} describes when the homotopy limit over this tower is the $p$-localisation of $X$. We will not consider this theorem.
+where $X$ is a $p$-local spectrum. These piece can be obtained from localisation along Morava $K$-theories. We will see this in the case where $X$ is a $p$-complete spectrum. Moreover \textit{the chromatic convergence theorem} asserts that the homotopy limit over this tower is the $p$-localisation of $X$ when $X$ is finite and $p$-local. We will not consider this theorem.
 
 \subsection{The moduli stack of formal groups}
 
-We start by turning to the the complex cobordism cohomology theory spectrum $MU$, which is universal among such complex oriented cohomology theories. Notice that $MU$ only has homotopy groups in even degrees, and so $\pi_*(MU)$ is a graded commutative ring. If we consider the natural inclusions $$MU \overset{d_0}{\to} MU \otimes MU \overset{d_1}{\leftarrow} MU,$$ we can form a pushout
-
+We start by turning to the the complex cobordism spectrum $MU$, which is universal among complex oriented cohomology theories. Notice that $MU$ only has homotopy groups in even degrees, and so $\pi_*(MU)$ is a commutative graded ring, as opposed to an anticommutative graded ring. If we consider the natural inclusions $$MU \overset{d^1}{\to} MU \otimes MU \overset{d^0}{\leftarrow} MU,$$ we can define the \textit{moduli stack of formal groups with strict isomorphisms} $\mathcal{M}^s_{FG}$ in such a way that the diagram
 \begin{center}
 \begin{tikzcd}
-\operatorname{Spec}(\pi_{*}(MU\otimes MU)) \arrow[rr, "d^1"] \arrow[dd, "d^0 "] &  & \operatorname{Spec}(\pi_{*}(MU)) \arrow[dd] \\ &  & \\
+\operatorname{Spec}(\pi_{*}(MU\otimes MU)) \arrow[rr, "d_1"] \arrow[dd, "d_0 "] &  & \operatorname{Spec}(\pi_{*}(MU)) \arrow[dd] \\ &  & \\
 \operatorname{Spec}(\pi_{*}(MU)) \arrow[rr] &  & \mathcal{M}^s_{FG}
 \end{tikzcd}
 \end{center}
-defining $\moduliS$ as a quotient $\Spec(\pi_{*}(MU))/\sim $. This is the \textit{moduli stack of formal groups with strict isomorphisms}. Note that $\moduliS$ is a $\mathbb{G}_m$-torsor with action given by the grading. This is because applying $\Spec$ to the grading
+is a cartesian square of stacks. In general, a $\Z$-grading on a commutative ring $R$ determines and is determined by a $\mathbb{G}_m$-action on $\Spec(R)$. So the $\Z$-grading
 \[
 \pi_* MU \to \Z [ t^{\pm 1} ] \otimes_\Z \pi_* MU
 \]
-yields the action
+on $\pi_* MU $ determines the $\mathbb{G}_m$-action
 \[
 \mathbb{G}_m \times \Spec (\pi_* MU) \to \Spec (\pi_* MU).
 \]
-We can quotient out this $\mathbb{G}_m$-action to obtain the stack $\moduli$ which we call the \textit{moduli stack of formal groups}. Now if $X$ is a spectrum, then we have descent data on $\pi_{2*}(MU \otimes_\Sph X)$
+We quotient out this $\mathbb{G}_m$-action to obtain the stack $\moduli$ which we call the \textit{moduli stack of formal groups}. Now if $X$ is a spectrum, then we have descent data on $\pi_{2*}(MU \otimes X)$
 \[
 \begin{tikzcd}
-  d^{1*} \pi_*(MU \otimes_\Sph X) \rar{\tilde{\varepsilon}} \arrow{dr}[swap]{\tilde{d^1}} & d^{0*} \pi_*(MU \otimes_\Sph X) \dar{\tilde{d^0}} \\
-  & \pi_*(MU \otimes_\Sph MU \otimes_\Sph X)
+  d^{1*} \pi_{2*}(MU \otimes X) \arrow[rr,"\tilde{\varepsilon}"] \arrow{dr}[swap]{\tilde{d^1}} & &d^{0*} \pi_{2*}(MU \otimes X) \arrow{dl}{\tilde{d^0}} \\
+  & \pi_{2*}(MU \otimes MU \otimes X) &
 \end{tikzcd}
 \]
-and  $\pi_{2*}(MU \otimes X)$ is a $(\pi_* MU, \pi_*(MU \otimes_\Sph MU))$-module. As we have seen, it corresponds to a quasicoherent $\mathcal{O}_{\moduliS}$-module we denote by $\mathcal{F}_X$.
+which makes $\pi_{2*}(MU \otimes X)$ a $(\pi_* MU, \pi_*(MU \otimes_\Sph MU))$-module. As we have seen, this corresponds to a $\mathbb{G}_m-$equivariant quasicoherent $\mathcal{O}_{\moduliS}$-module, and under the equivalence $$\operatorname{QCoh}(\moduliS)^{\mathbb{G}_m} \simeq \operatorname{QCoh}(\moduli)$$ this corresponds to a quasicoherent $\mathcal{O}_{\moduli}$-module, which we denote by $\mathcal{F}_X$.
 \iffalse
 For a formal group law $f\in R[[x,y]]$ over a $\Z_{(p)}$ algebra $R$ one can define its \emph{height} which is roughly the smallest index where the $p$-series coefficients are non-zero. This notion will lead to a filtration or stratification of $\mathcal{M}^s_{FG}$ by height.
 \fi
 Consider the formal completion
 \[
-\moduliH := "\colim_n" \moduli \times_{\Spec (\Z)} \Spec(\Z /p^n)
+\moduliH := ``\colim_n" \moduli \times_{\Spec (\Z)} \Spec(\Z /p^n)
 \]
 of $\moduli$ along $p$. This has a stratification of closed sub-ind-stacks
 \[
@@ -231,16 +230,16 @@ called \textit{the height stratification} of $\moduliH$. As we will see next, we
 
 \subsection{Recollements of $p$-complete spectra}\label{Subsection:recollementpcompletespectra}
 
-We can define a filtration $\operatorname{Fil}^h \Spp$ of $\Spp$, and each such filtration step fits into two recollement diagrams. These recollements define the fundamental objects of what is called Morava $E$ and $K$ theory, namely those of $E(n)$ and $K(n)$-local objects for a natural number $n$.
+We can define a filtration of $\Spp$, and each such filtration step fits into two recollement diagrams. These recollements define the fundamental objects of what is called Morava $E$ and $K$ theory, namely those of $E(n)$ and $K(n)$-local objects for a natural number $n$.
 \begin{definition}
   Let $\Spp^{\ge h} \subset \Spp$
-  be the full subcategory spanned by all $p$-complete spectra $X$ such that the associated quasi-coherent sheaves $\mathcal{F}_X$ and $\mathcal{F}_{\Sigma X}$ are supported on $\moduliH^{\ge h}$, and let $i_\vee$ denote the inclusion $\Spp^{\ge h} \hookrightarrow \Spp$.
+  be the full subcategory spanned by all $p$-complete spectra $X$ such that the associated quasi-coherent sheaves $\mathcal{F}_X$ and $\mathcal{F}_{\Sigma X}$ are supported on $\moduliH^{\ge h}$, and write $i_\vee \colon\Spp^{\ge h} \hookrightarrow \Spp$ for the inclusion.
 \end{definition}
-Now set $\operatorname{Fil}^h \Spp = \Spp^{\ge h}$ for each $h \ge 0$. This defines a filtration on $\Spp$. We have a Verdier sequence
+These full subcategories defines a filtration on $\Spp$. We have a Verdier sequence
 \[
 \Spp^{\ge h+1} \overset{i_\vee}{\hookrightarrow} \Spp \overset{j^*}{\to} \Spp^{\le h}.
 \]
-where we denote the Verdier quotient $\Spp/\Spp^{\ge h+1}$ by $\Spp^{\le h}$. The functor $j^*$ admits a right adjoint $j_*$, and $j_*j^*$ is smashing (see e.g. \cite{luriechromatichomotopytheorynotes}, lecture 23, Theorem 4), so $j_*$ admits a right adjoint by the Smashing Conjecture. Applying the Recollement results we have seen earlier we get a diagram
+where we denote the Verdier quotient $\Spp/\Spp^{\ge h+1}$ by $\Spp^{\le h}$. The functor $j^*$ admits a right adjoint $j_*$, and $j_*j^*$ is smashing (see e.g. \cite{luriechromatichomotopytheorynotes}, lecture 23, Theorem 4), so $j_*$ admits a right adjoint by the affirmed Smashing Conjecture. Applying recollement, we get a diagram
 \iffalse
 \begin{center}
   \begin{tikzcd}
@@ -259,15 +258,15 @@ where we denote the Verdier quotient $\Spp/\Spp^{\ge h+1}$ by $\Spp^{\le h}$. Th
   \Spp/ \Spp^{\le h} \arrow[ur, shift right=1ex, "i_\wedge" description] \arrow[uu, shift right=1.5ex, "\sim", "i^\vee i_\wedge"']
   \end{tikzcd}
 \end{equation}
-where
+where also
 \[
 \Spp^{\le h} \toWithMapLong{j_*} \Spp \toWithMapLong{i^\wedge} \Spp / \Spp^{\le h}.
 \]
 is a Verdier sequence. The categories present in this diagram are important in chromatic homotopy theory, and so the objects are given specific names.
 \begin{definition}
-In the recollement diagram (\ref{SppRecollement1}) we say that objects of $\Spp^{\le h}$ are $E(h)$\textit{-local} objects, objects of the cofiber $\Spp/\Spp^{\le h}$ are \textit{complete away from} $E(h)$ and objects of $\Spp^{\ge h+1}$ are $E(h)$\textit{-acyclic}.
+In the recollement diagram (\ref{SppRecollement1}) the objects of $\Spp^{\le h}$ are called $E(h)$\textit{-local} spectra, objects of the cofiber $\Spp/\Spp^{\le h}$ are spectra \textit{complete away from} $E(h)$ and objects of $\Spp^{\ge h+1}$ are $E(h)$\textit{-acyclic} spectra.
 \end{definition}
-The objects of this recollement fits into another recollement, which constructs the $K(h)$-local objects used in Morava K theory.
+The objects of this recollement fits into another recollement, which constructs the $K(h)$-local objects used in Morava $K$-theory.
 \begin{equation}
   \label{SppRecollement2}
     \begin{tikzcd}[sep = large]
@@ -278,9 +277,9 @@ The objects of this recollement fits into another recollement, which constructs 
 \end{equation}
 
 \begin{definition}
-In the recollement diagram (\ref{SppRecollement2}) we say that objects of $\Spp^{\ge h}/\Spp^{\ge h+1}$ are \textit{monochromatic of level h} and that objects of $\Spp^{\le h}/\Spp^{\le h-1}$ are $K(h)$\textit{-local}.
+In the recollement diagram (\ref{SppRecollement2}) we say that objects of $\Spp^{\ge h}/\Spp^{\ge h+1}$ are \textit{monochromatic spectra of level h} and that objects of $\Spp^{\le h}/\Spp^{\le h-1}$ are $K(h)$\textit{-local} spectra.
 \end{definition}
-From now on we work with the maps in the last diagram. Notice that the equivalence in the last recollement diagram looks like a rule of fractions if we write out the Verdier quotient $\Spp^{\le h} / \Spp^{\le h -1}$. In this diagram the unit $\operatorname{id} \to j_*j_*$ is $E(h)$\textit{-localisation} and we denote the component maps of the natural transforation as $X \mapsto L_{E(h)}X$, and similarly component maps of $\operatorname{id} \to i_\wedge i^\wedge$ are denoted as $X \mapsto L_{K(h)}X$. These are the Bousfield localisation functors with respect to $E(h)$ and $K(h)$. The Recollement square
+From now on we work with the maps in the last diagram. Notice that the equivalence in the last recollement diagram looks like a rule of fractions if we write out the Verdier quotient $\Spp^{\le h} / \Spp^{\le h -1}$. In this diagram the unit $\operatorname{id} \to j_*j_*$ is $E(h)$\textit{-localisation} and we denote the component maps of the natural transforation as $X \mapsto L_{E(h)}X$, and similarly component maps of $\operatorname{id} \to i_\wedge i^\wedge$ are denoted as $X \mapsto L_{K(h)}X$. One can prove that these are the Bousfield localisation functors with respect to spectra $E(h)$ and $K(h)$. The recollement square
 \begin{center}
     \begin{tikzcd}
     \operatorname{id} \arrow{r} \arrow{d} & i_\wedge i^\wedge \arrow{d} \\
@@ -294,18 +293,19 @@ is important in this case. Recall that this is a cartesian square, so we can rec
     L_{E(h-1)}X \arrow{r} & L_{E(h-1)}L_{K(h)}X
     \end{tikzcd}
 \end{center}
-since $L_{E(h-1)}L_{E(h)}X = L_{E(h-1)}X$. Furthermore, such a cartesian square gives a long exact sequence of homotopy groups which can be quite useful. For example, in (\cite{luriechromatichomotopytheorynotes}, Lecture 35) Lurie uses these facts to compute the $K(1)$ and $E(1)$-localisation of the sphere spectrum $\Sph$.
+since $L_{E(h-1)}L_{E(h)}X \simeq L_{E(h-1)}X$ and $L_{K(h)}L_{E(h)}X \simeq L_{K(h)}X$. Furthermore, such a cartesian square gives a long exact sequence of homotopy groups which can be quite useful. For example, in (\cite{luriechromatichomotopytheorynotes}, Lecture 35) Lurie uses these facts to evaluate the $K(1)$ and $E(1)$-localisation of the sphere spectrum $\Sph$.
 
 \section{Bousfield localisation of $p$-complete spectra}\label{Section:bousfieldlocal}
 
-As mentioned we are interested in $E(h)$ and $K(h)$-localisations, and Bousfields article \cite{bousfield1979localization} concerns the case of $E(1)$-localisations, also known as $KU_p$-localisation for a prime $p$, where $KU_p$ is the $p$-localisation of the complex K-theory spectrum. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra. Bousfield mentions two results in \cite{bousfield1979localization} which will be crucial to our calculations. These are the contents of following two theorems.
+As mentioned we are interested in $E(h)$ and $K(h)$-localisations, In \cite[Theorem~5.0.2]{ellipticcohomII} Lurie defines $E(h)$ for any $h$ as an $E_\infty$-spectrum. If $h=1$ we have the case of $E(1)$-localisations, and we have an equivalence of spectra $E(1) \simeq KU_p$ for a prime $p$, where $KU_p$ is the $p$-localisation of the complex K-theory spectrum. Under this equivalence the action of $\Z_p^*$ on $E(1)$ corresponds to the Adam's operations on $KU_p$. This localisation is what Bousfields article \cite{bousfield1979localization} describes. The rest of this paper is devoted to calculating $E(1)$-localisations of $p$-complete spectra. Bousfield mentions two results in \cite{bousfield1979localization} which will be crucial to our calculations. These are the contents of following two theorems.
 \begin{theorem}[Adams-Baird, Ravenel]\label{Adams-Baird, Ravenel}
   $E(1)$-localisation is smashing, i.e. $L_{E(1)}X \simeq X \otimes L_{E(1)} \mathbb{S}_p$. Equivalently, this says that $X \to X \otimes L_{E(1)} \mathbb{S}_p$ is an $E(1)$-localisation
 \end{theorem}
 In particular, Theorem \ref{Adams-Baird, Ravenel} says that we get a recollement diagram (\ref{SppRecollement2}) for $h=1$. The units of the $p$-adic integers $\Z_p^*$ acts on $E(1)$ by taking a unit $g \in \Z_p^*$ to the Adam's operation $\psi_g$, and this action turns out to very important to our calculations.
 \begin{theorem}[Mahowald for $p=2$, Miller for $p$ odd]\label{Mahowald, Miller}
-   The homotopy fix points of the action of $\Z_p^*$ on $E(1)$ satisfy that
-     $$L_{E(1)}\mathbb{S}_p \simeq E(1)^{h\Z_p^*}.$$
+   The map of spectra
+     $$\Sph_p \to E(1)^{h\Z_p^*}$$
+     is an $E(1)$-localisation.
 \end{theorem}
 Combining Theorem \ref{Adams-Baird, Ravenel} and \ref{Mahowald, Miller} lets us understand the $E(1)$-localisation of $p$-complete spectra by understanding the homotopy fixed points of the action of $\Z_p^*$ on the spectrum $E(1)$. This is the contents of the rest of the article.
 
@@ -318,10 +318,10 @@ We do a quick recollection of some needed propertis of the $p$-adic integers. Re
   x=\sum_{n = 0}^\infty a_n p^n
 \]
 where $ 0 \le a_n \le p-1$ for all $n$.
-An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$, i.e. $a_0 \neq 0$.
+An element $u$ of $\Z_p$ is a unit, if and only if, $u$ is not divisible by $p$, i.e. if, and only if, $a_0 \neq 0$.
 
 \begin{remark}
-  The homotopy groups of $E(1)$ are $\Z_p$ in the even degrees and zero otherwise, and we write $\pi_{2n}E(1) \simeq \Z_p(n)$ where $n$ is the called the \textit{weight}. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
+  The homotopy groups of $E(1)$ are non-canonically isomorphic to $\Z_p$ in the even degrees and zero otherwise. We write $\pi_{2n}E(1) = \Z_p(n)$ where $\Z_p(n)$ denotes the free $\Z_p$-module of rank $1$ with no preferred choice of generator, and $n$ is the called the \textit{weight}. Though the action of $\Z_p^*$ on $E(1)$ is complicated to describe, the induced action of $\Z_p^*$ on the homotopy groups $\pi_{2n}E(1)$ is simple. It is given by taking a $p$-adic unit $g$ and acting as multiplication by $g^n$.
 \end{remark}
 
 \subsubsection{The homotopy groups when $p$ is odd}
@@ -743,6 +743,11 @@ This is a direct consequence of case ii) in (\cite{adams}, Lemma 2.12)
   Jacob Lurie,
   \textit{Chromatic homotopy theory lecture notes},
   2010.
+
+  \bibitem{ellipticcohomII}
+    Jacob Lurie,
+    \textit{Elliptic Cohomology II: Orientations},
+    2018.
 
 \end{thebibliography}
 

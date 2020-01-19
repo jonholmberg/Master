@@ -330,41 +330,41 @@ We first treat the case where $p$ is an odd prime, which results in the followin
 \begin{theorem}
  If $p$ is an odd prime then
  \[
-  \pi_n E(1)^{h\Z_p^*} \simeq
+  \pi_j E(1)^{h\Z_p^*} \simeq
     \begin{cases}
-    \Z_p, & n=0,-1 \\
-    \Z/p^{v_p(n)+1}\Z, & p-1 \text{ divides } n \\
+    \Z_p, & j=0,-1 \\
+    \Z/p^{v_p(n)+1}\Z, & \text{if } j=2n-1 \text{ and } p-1 \text{ divides } n \\
     0, & \text{otherwise}
     \end{cases}
   \]
   where $v_p$ is $p$-adic valuation.
 \end{theorem}
-The first intermediate result will be that $p$ is an odd prime $\Z_p^*$ is topologically cyclic, which will be important in our calculations.
+The first intermediate result will be that $p$ is an odd prime $\Z_p^*$ is topologically cyclic, in the sense that it contains a dense cyclic subgroup, which will be important in our calculations.
 \begin{lemma}
-  If $p$ is an odd prime, then the units of the $p$-adic integers $\Z_p^*$ is topologically cyclic.
+  If $p$ is an odd prime, then the group of units of the $p$-adic integers $\Z_p^*$ is topologically cyclic.
 \end{lemma}
 \begin{proof}
-The mod $p$ map $\Z_p^* \to \F_p^*$ is surjective, and has kernel $(1+p\Z_p)^*$ so there is a short exact sequence
+The reduction modulo $p$ map $\Z_p^* \to \F_p^*$ is surjective, and has kernel $(1+p\Z_p)^*$ so there is a short exact sequence
 \[
 \begin{tikzcd}
 1 \rar & (1+p\Z_p)^* \rar{} & \Z_p^* \rar{} & \F_p^* \rar & 1
 \end{tikzcd}
 \]
-This sequence split since there is a section $\omega \colon \F_p^* \to \Z_p^*$. This is called the \textit{Teichmüller character}, and we can define it as follows. Let $\zeta \in \F_p^*$ be any $(p-1)$'st root of unity, and let $x \in \Z_p^*$ be any $p$-adic unit such that $x \equiv \zeta$ mod $p$. Set $\omega(\zeta) = \lim_{n \to \infty} x^{p^n}$. This converges in the $p$-adic topology and is independent of the choice of $x$,
-and thus $\omega$ defines a multiplicative section. Hence
+This sequence splits and there is a preferred section $\omega \colon \F_p^* \to \Z_p^*$. This is called the \textit{Teichmüller character} defined it as follows. Let $\bar{x} \in \F_p^*$, and let $x \in \Z_p^*$ be any $p$-adic unit such that $x \equiv \bar{x}$ mod $p$. Set $\omega(\bar{x}) = \lim_{n \to \infty} x^{p^n}$. This converges in the $p$-adic topology and is independent of the choice of $x$.
+Moreover $\omega$ is a multiplicative section. Hence
 \[
-\Z_p^* \cong (1 + p\Z_p)^* \times \F_p^*,
+\Z_p^* \cong (1 + p\Z_p)^* \times \F_p^*.
 \]
-and so $g = (1+p, \zeta)$ where $\zeta$ is any $(p-1)$'st root of unity, is a topological generator for $\Z_p^*$.
+Recall that the multiplicative group $\F_p^*$ is cyclic with generator any $(p-1)$'st primitive root of unity, and so for instance $g = (1+p, \zeta)$ where $\zeta$ is any primitive $(p-1)$'st root of unity, is a topological generator for $\Z_p^*$.
 \end{proof}
 In the remaining parts of this section, we will fix a topological generator $g \in \Z_p^*$. Our first intermediate result in the calculations is the following proposition.
 \begin{proposition}
   If $p$ is an odd prime, then
   \[
-   \pi_n E(1)^{h\Z_p^*} \simeq
+   \pi_j E(1)^{h\Z_p^*} \simeq
      \begin{cases}
-     \Z_p, & n=0,-1 \\
-     \coker (g^n - \id), & -1 \neq n \text{ and $n$ odd} \\
+     \Z_p, & j=0,-1 \\
+     \coker (g^n - \id), & j=2n-1 \text{ and } n \neq 0  \\
      0, & \text{otherwise.}
      \end{cases}
    \]
@@ -377,49 +377,51 @@ E^2_{i,j} = H^{-i}(BG, \pi_j(X)) \implies \pi_{i+j}(X^{hG}).
 \]
 In our case, $\Z_p^*$ acts on $E(1)$ and $\Z_p^*$ is topologically cyclic so the spectral sequence looks like
 \[
-E^2_{i,j} = H_c^{-i}(B\Z_p^*, \pi_j(E(1))) \implies \pi_{i+j}(E(1)^{h\Z_p^*}),
+E^2_{i,j} = H_{\operatorname{cts}}^{-i}(B\Z_p^*, \pi_j(E(1))) \implies \pi_{i+j}(E(1)^{h\Z_p^*}),
 \]
-where $H_c$ denotes continuous cohomology. Now using that the homotopy groups of $E(1)$ are concentrated in even degrees, we have that
+where $H_{\operatorname{cts}}$ denotes continuous cohomology. Now using that the homotopy groups of $E(1)$ are concentrated in even degrees, we have that
 \[
-  H^i_c(B\Z_p^*, \pi_j(E(1))) =
+  H^i_{\operatorname{cts}}(B\Z_p^*, \pi_j(E(1))) =
 \begin{cases}
-\ker (g^j - \id), & i=0 \text{ and } j \text{ even} \\
-\coker (g^j - \id), & i=1 \text{ and } j \text{ even} \\
+\ker (g^n - \id), & i=0 \text{ and } j=2n \\
+\coker (g^n - \id), & i=1 \text{ and } j =2n \\
 0, & \text{otherwise.}
 \end{cases}
 \]
-where $g^j \colon \Z_p(n) \to \Z_p(n)$ is multiplication by $g^j$. Looking at the second page of the spectral sequence we notice immediately that there are no non-trivial differentials, and in fact this is the case for any page $E^k$ for $k \ge 2$. So we can easily determine the homotopy groups. First of all
+where $g^n \colon \Z_p(n) \to \Z_p(n)$ is multiplication by $g^n$. Looking at the second page of the spectral sequence we notice immediately that there are no non-trivial differentials, and in fact this is the case for any page $E^k$ for $k \ge 2$. So we can easily determine the homotopy groups. First of all
 \begin{align*}
-  \pi_0 E(1)^{h\Z_p^*} & \cong  H^0_c(B\Z_p^*, \pi_0 E(1)) \\
-    & \cong \ker (\Z_p(0) \toWithMapLong{0} \Z_p(0)) \\
-    & \cong \Z_p
+  \pi_0 E(1)^{h\Z_p^*} & =  H^0_{\operatorname{cts}}(B\Z_p^*, \pi_0 E(1)) \\
+    & = \ker (\Z_p(0) \toWithMapLong{0} \Z_p(0)) \\
+    & = \Z_p
 \end{align*}
 and similarly,
 \begin{align*}
-  \pi_{-1} E(1)^{h\Z_p^*} & \cong  H^1_c(B\Z_p^*, \pi_0 E(1)) \\
-    & \cong \coker (\Z_p(0) \toWithMapLong{0} \Z_p(0)) \\
-    & \cong \Z_p.
+  \pi_{-1} E(1)^{h\Z_p^*} & =  H^1_{\operatorname{cts}}(B\Z_p^*, \pi_0 E(1)) \\
+    & = \coker (\Z_p(0) \toWithMapLong{0} \Z_p(0)) \\
+    & = \Z_p.
 \end{align*}
-When $j \neq 0$, $g^j - \id$ is an injection, and so $\ker(g^j - \id) = 0$. Hence
+If $n \neq 0$, then $g^n - \id$ is an injection, hence
 \begin{align*}
-  \pi_{2j} E(1)^{h\Z_p^*} & \cong  H^0_c(B\Z_p^*, \pi_{2j} E(1)) \\
-    & \cong \ker (\Z_p(j) \toWithMapLong{g^j - \id} \Z_p(j)) \\
+  \pi_{2n} E(1)^{h\Z_p^*} & = H^0_{\operatorname{cts}}(B\Z_p^*, \pi_{2n} E(1)) \\
+    & =\ker (\Z_p(n) \toWithMapLong{g^n - \id} \Z_p(n)) \\
     &  = 0
 \end{align*}
-Finally for $j \neq 0$, we have that
+Finally for all $n$, we have that
 \begin{align*}
-  \pi_{2j-1} E(1)^{h\Z_p^*}  \cong  H^1_c(B\Z_p^*, \pi_2j E(1))
-    \cong \coker (\Z_p(j) \toWithMapLong{g^j - \id} \Z_p(j))
+  \pi_{2n-1} E(1)^{h\Z_p^*}  =  H^1_{\operatorname{cts}}(B\Z_p^*, \pi_{2n} E(1))
+    = \coker (\Z_p(n) \toWithMapLong{g^n - \id} \Z_p(n))
 \end{align*}
 which completes the proof of the proposition.
 \end{proof}
-What remains in our calculations is to identify the cokernel of $g^n-\id$ when $n \neq 0$. This requires some work with the $p$-adic integers, and will be the contents of our next lemma. To state the lemma we need the notion of the \textit{$p$-adic valuation} function $v_p \colon \Z_p \to \Z \cup \{\infty\}$. Every $p$-adic integer $x \in \Z_p$ can be uniquely written as $x = up^n$ where $u$ is a $p$-adic unit and $n$ is a non-negative integer. Set $v_p(x) = n$, with the convention that $v_p(0) = \infty$.
+What remains in our calculations is to identify the cokernel of $g^n-\id$ when $n \neq 0$. This requires some work with the $p$-adic integers, and will be the contents of our next lemma. To state the lemma, we need the \textit{$p$-adic valuation} $v_p \colon \Z_p \to \Z \cup \{\infty\}$. Every $p$-adic integer $x \in \Z_p$ can be uniquely written as $x = up^n$ where $u$ is a $p$-adic unit and $n$ is a non-negative integer. Set $v_p(x) = n$, with the convention that $v_p(0) = \infty$.
 \begin{lemma}
   If $n$ is a positive integer then
   \[
-    \coker(g^n - \id) \cong \Z/p^{v_p(n)+1}\Z
+    \coker(g^n - \id) \cong \begin{cases}
+      \Z/p^{v_p(n)+1}\Z, & \text{if } p-1 \text{ divides } n \\
+      0, & \text{otherwise}.
+  \end{cases}
   \]
-  when $p-1$ divides $n$ and zero otherwise.
 \end{lemma}
 \begin{proof}
 We have a short exact sequence
@@ -440,7 +442,7 @@ First, consider the case where $p-1$ does not divide $n$. Then $g^n -1 \not\equi
 \[
 \coker ( g^n - \id ) = 0.
 \]
-Now consider the case where $p-1$ divides $n$. This means that $g^n \equiv 1$ mod $p$, and so $g^n$ is in the kernel of the mod $p$ map, i.e. $g^n \in (1 + p\Z_p)^*$. We can then write $g^n = (g^{p-1})^{n/(p-1)}$ and since $g$ is a topological generator, so is $g^{p-1} \in (1 + p\Z_p)^*$. Since $p$ is odd, we have isomorphisms
+Now consider the case where $p-1$ divides $n$. This means that $g^n \equiv 1$ mod $p$, and so $g^n$ is in the kernel of the mod $p$ map, i.e. $g^n \in (1 + p\Z_p)^*$. We can then write $g^n = (g^{p-1})^{n/(p-1)}$ and since $g \in \Z_p^* $ is a topological generator, so is $g^{p-1} \in (1 + p\Z_p)^*$. Since $p$ is odd, we have isomorphisms
 \[
 \begin{tikzcd}
   (1+ p\Z_p)^* \arrow[d, "\log"', "\sim", shift right=1.3ex] \\
@@ -463,7 +465,7 @@ Combining these two results finishes our calculations when $p$ is odd.
 In this section we show the following theorem
 
 \begin{theorem}\label{theorem:p=2final}
-  The homotopy groups of $E(1)^{h\Z_2^*}$ are given by canonical equivalences
+  There are canonical isomorphisms
   \[
   \pi_nE(1)^{h\Z_2^*} \simeq
     \begin{cases}
@@ -478,13 +480,13 @@ In this section we show the following theorem
     \end{cases}
   \]
 \end{theorem}
-When $p=2$, then we cannot use the same argument to say that $\Z_2^*$ is topologically cyclic. Instead, notice that $\Z_2^* \cong (1 + 2\Z_2)^*$ and consider the short exact sequence
+Since $\Z_2^*$ is not topologically cyclic, we cannot use the same approach as we did for an odd prime $p$. Instead, notice that $\Z_2^* \cong (1 + 2\Z_2)^*$ and consider the short exact sequence
 \[
 \begin{tikzcd}
   1 \arrow{r} & (1 + 4\Z_2)^* \arrow{r} & (1+2\Z_2)^* \arrow{r} & \{\pm 1\} \rar & 1
 \end{tikzcd}
 \]
-where the last non-trivial map is mod $4$. This splits since we can lift $-1$ to $1 + (-1)2$, and we obtain that
+where the last non-trivial map is reduction modulo $4$. This splits since we can lift $-1$ to $1 + (-1)2$, and we obtain a canonical isomorphism
 \[
 \Z_2^* \cong (1 + 4\Z_2)^* \times \{\pm 1\}.
 \]
@@ -574,7 +576,7 @@ and since we have non-trivial homotopy groups of $E(1)$
 in the even negative degrees, $u$ is invertible, and so
 $E^2$ is the algebra $\Z_2[t, u^{\pm 1}]/(2t)$.
 
-We now look at the differentials on the $E^3$-page, and as it turns out, most of them disappear. First notice that $E(1)$ is an $E_\infty$-ring spectrum, and so there is a unique map $\Sph \to E(1)$ since $\Sph$ is initial among $E_\infty$-ring spectra. It is a non-trivial fact that on homotopy groups this maps sends the Hopf map $\eta \in \pi_1(\Sph)$ to our generator $t$, and since we know that $\eta^4 \in \pi_4(\Sph) = 0$ we must have that $\eta^4 = 0$ and so $t^4 = 0$. Hence the differential on $E^3$ satisfy that $0 = d^3 t^4$
+We now look at the differentials on the $E^3$-page, and as it turns out, most of them disappear. First notice that $E(1)$ is an $E_\infty$-ring spectrum, and so there is a unique map $\Sph \to E(1)$ since $\Sph$ is initial among $E_\infty$-ring spectra. It is a non-trivial fact that on homotopy groups this maps sends the Hopf map $\eta \in \pi_1(\Sph)$ to a homotopy class represented by our generator $t$, and since we know that $\eta^4 \in \pi_4(\Sph) = 0$ we must have that $\eta^4 = 0$ and so $t^4 = 0$. Hence the differential on $E^3$ satisfy that $0 = d^3 t^4$
 which then forces $d^3t = 0$ by the multiplicative structure on the differentials.
 
  We now claim that $d^3(u) = t^3$. To see this consider the following short exact sequence of bigraded abelian groups
@@ -616,8 +618,8 @@ This is a direct consequence of case ii) in (\cite{adams}, Lemma 2.12)
   \[
   E^2_{i,j} = H^{-i}(B(1+4 \Z_2)^*, \pi_jE(1)^{h\{\pm 1\}}) \implies \pi_{i+j}\left(E(1)^{h\{\pm 1\}}\right)^{h(1 + 4\Z_2)^*}
   \]
-  Notice that the logarithm gives an equivalence $(1+4\Z_2)^*\toWithMapLong{\simeq} 4\Z_2$ and multiplication by $4$ gives an equivalence $\Z_2 \toWithMapLong{\simeq} 4\Z_2$, so it suffices to calculate the group cohomology of $\Z_2$ with coefficients in $\pi_jE(1)^{h\{\pm 1\}}$. Using that $5$ generates $(1+4\Z_2)^*$ calculations yields that
-  $H^i(\Z_2, \pi_jE(1)^{h\{\pm 1\}})$ vanishes for $i \ge 2$, and for $i =0,1$ the cohomology group depends on the weight of the coefficients.
+  Notice that the logarithm gives an isomorphism $(1+4\Z_2)^*\toWithMapLong{\simeq} 4\Z_2$ and multiplication by $4$ gives an isomorphism $\Z_2 \toWithMapLong{\simeq} 4\Z_2$, so it suffices to calculate the group cohomology of $\Z_2$ with coefficients in $\pi_jE(1)^{h\{\pm 1\}}$. Using that $5$ generates $(1+4\Z_2)^*$ calculations yield that
+  $H^i(\Z_2, \pi_jE(1)^{h\{\pm 1\}})$ vanishes for $i \ge 2$, and that for $i =0,1$, the cohomology group depends on the weight of the coefficients.
   \iffalse
   \begin{center}
     \begin{tikzpicture}
@@ -650,7 +652,7 @@ This is a direct consequence of case ii) in (\cite{adams}, Lemma 2.12)
     \item This case requires a bit of work. We have seen that the cokernel of $1-t^{i/2}$ is $\Z/2^{v_2(1-t^{i/2})}\Z$, and so we calculate $v_2({1-t^{i/2}})$ when $i \equiv 4$ mod $8$. $i \equiv 4$ mod $8$ implies that $i/2 \equiv 2$ or $i/2 \equiv 6$ mod $8$ so that $v_2(i/2) = 1$ since $i/4$ is odd
     and from Lemma \ref{lemma:2adicval} we get that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 3$. Thus $1-t^{i/2}$ is an injective map with cokernel $\Z/2^3 = \Z/8$
   \end{enumerate}
-  From this we see that the $E^2$-page is $8$-periodic in $j$ and will look like the following
+  From this we see that the $E^2$-page looks like the following
   \begin{table}[H]
     \centering
     \setlength{\tabcolsep}{12pt}
@@ -671,7 +673,7 @@ This is a direct consequence of case ii) in (\cite{adams}, Lemma 2.12)
   $\cdots$  & -2 & -1 & 0 &
   \end{tabular}
   \end{table}
-  \noindent There are no non-trivial differentials on page $E^k$ for $k \ge 2$, so this page is actually the $E^\infty$ page, and so most of the homotopy groups we can read directly from this page. There are a few cases where we get an extension problem. These are in total degree $0$ and $n$ when $n \equiv 1$ mod $8$. In the first case we have a short exact sequence
+  \noindent The page is $8$-periodic in $j$ except for the entries $E^2_{i,j}$ where $i = -1$ and $j \equiv 0$ mod $8$ for $j \neq 0$. In this case we have that $E^2_{i,j} = \Z/2^{v_2(j)+1}\Z(j/2)$. There are no non-trivial differentials on page $E^k$ for $k \ge 2$, so this page is actually the $E^\infty$ page, and so most of the homotopy groups we can read directly from this page. There are a few cases where we get an extension problem. These are in total degree $0$ and $n$ when $n \equiv 1$ mod $8$. In the first case we have a short exact sequence
   \[
   \begin{tikzcd}
     0 \rar & \Z/2(1) \rar & \pi_0E(1)^{h\Z_2^*} \rar & \Z_2(0) \rar & 0

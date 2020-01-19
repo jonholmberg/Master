@@ -10,7 +10,7 @@
 \usepackage{amssymb}              % Load additional symbols, such as \blacksquare
 \usepackage{tikz-cd}              % Commutative diagrams.
 \usepackage{graphicx}             % Include figures.
-\usepackage[margin=3cm,top=3cm, bottom=3cm]{geometry}         % Change margins.
+%\usepackage[margin=3cm,top=3cm, bottom=3cm]{geometry}         % Change margins.
 \usepackage{faktor}               % Nice algebraic quotients.
 \usepackage{xfrac}                % Nice in-line fraction.
 \usepackage{enumerate}            % Easy enumerate
@@ -152,8 +152,8 @@
 \title{Recollement and Localisation\\Topics in Algebraic Topology}
 
 \rhead{Jon Lindegaard Holmberg}
-\lhead{TopTop 2019/2020}
-\chead{Recollement and Localisation}
+\lhead{Recollement and Localisation}
+\chead{}
 
 \begin{document}
 
@@ -645,11 +645,11 @@ This is a direct consequence of case ii) in (\cite{adams}, Lemma 2.12)
   \end{enumerate}
   We do this for each case.
   \begin{enumerate}[i)]
-    \item When $i=0$, $1-5^0 = 0$ so the map has kernel and cokernel $\Z_2(0)$. When $i \equiv 0$ mod $8$ and $i \neq 0$, the map $1-5^{1/2}$ is injective and the cokernel is given by $\Z/2^{v_2(1-5^{i/2})}\Z$. By Lemma \ref{lemma:2adicval} we have that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 1 + v_2(i)$,
+    \item If $i=0$, then $1-5^i = 0$ so the map has kernel and cokernel $\Z_2(0)$. If $i \equiv 0$ mod $8$ and $i \neq 0$, the map $1-5^{i/2}$ is injective and the cokernel is given by $\Z/2^{v_2(1-5^{i/2})}\Z$. By Lemma \ref{lemma:2adicval} we have that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 1 + v_2(i)$,
     which shows that the cokernel is $\Z/2^{v_2(i)+1}\Z$.
     \item In this case $1-5^{(i+1)/2}$ will be even, so it will actually be the zero map.
     \item This case is similar to case ii). The map will be the zero map.
-    \item This case requires a bit of work. We have seen that the cokernel of $1-t^{i/2}$ is $\Z/2^{v_2(1-t^{i/2})}\Z$, and so we calculate $v_2({1-t^{i/2}})$ when $i \equiv 4$ mod $8$. $i \equiv 4$ mod $8$ implies that $i/2 \equiv 2$ or $i/2 \equiv 6$ mod $8$ so that $v_2(i/2) = 1$ since $i/4$ is odd
+    \item This case requires a bit of work. We have seen that the cokernel of $1-t^{i/2}$ is $\Z/2^{v_2(1-t^{i/2})}\Z$, and so we calculate $v_2({1-t^{i/2}})$ when $i \equiv 4$ mod $8$. The assumption that $i \equiv 4$ mod $8$ implies that $i/2 \equiv 2$ or $i/2 \equiv 6$ mod $8$ so that $v_2(i/2) = 1$ since $i/4$ is odd
     and from Lemma \ref{lemma:2adicval} we get that $v_2(1-t^{i/2}) = 2 + v_2(i/2) = 3$. Thus $1-t^{i/2}$ is an injective map with cokernel $\Z/2^3 = \Z/8$
   \end{enumerate}
   From this we see that the $E^2$-page looks like the following
